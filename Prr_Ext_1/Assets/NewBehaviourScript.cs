@@ -6,7 +6,7 @@ public class NewBehaviourScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        GUILayout.Label("Let's go!");
+        Debug.Log("Test, test! Let's go!");
 	}
 	
 	// Update is called once per frame
