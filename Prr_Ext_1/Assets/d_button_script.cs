@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class tw_button_script : MonoBehaviour
+public class d_button_script : MonoBehaviour
 {
     public void OnMouseDown()
     {
-        Destroy (gameObject);
+        Destroy(gameObject);
     }
 }
