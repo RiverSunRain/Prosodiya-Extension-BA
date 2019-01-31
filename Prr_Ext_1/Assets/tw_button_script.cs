@@ -5,17 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class tw_button_script : MonoBehaviour
 {
-    public int SceneNumber;
-    public GameObject Obj;
+    public Word Word;
 
-    public void OnMouseDown()
+    public void CloudClicked()
     {
-        SceneNumber = 2;
         Destroy(gameObject);
-        if (SceneNumber == 2)
-        {
-            SceneManager.LoadScene("Scene_2");
-        }
+        Controller.Instance.CloudWasClicked(Word.WordString);
     }
 
 
