@@ -248,7 +248,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -610,6 +610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b384c9ab12a339b49bb83b684381f4fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxClicks: 4
   CloudWrapper: {fileID: 441116470}
   CloudPrefabs: {fileID: 1805558596156110, guid: 0af0c264f68f2c44aaa5d7248efa6aac,
     type: 2}
@@ -621,6 +622,7 @@ MonoBehaviour:
   - {x: -764, y: 325}
   - {x: -354, y: 132}
   - {x: 0, y: 0}
+  sas: {fileID: 422016465}
 --- !u!4 &1311582157
 Transform:
   m_ObjectHideFlags: 0

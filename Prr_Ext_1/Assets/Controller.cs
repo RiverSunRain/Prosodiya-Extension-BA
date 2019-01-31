@@ -63,8 +63,8 @@ public class Controller : MonoBehaviourSingleton<Controller>
         }
     }
 
-    public void CloudWasClicked(string wordText)
+    public void CloudWasClicked(Word word)
     {
-        Debug.Log(wordText);
+        Debug.Log(word.WordString);
     }
 }
