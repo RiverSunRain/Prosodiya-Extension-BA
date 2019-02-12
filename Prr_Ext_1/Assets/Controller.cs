@@ -12,6 +12,9 @@ public class Controller : MonoBehaviourSingleton<Controller>
     public List<Word> WordList;
     public List<Vector2> AllowedPositions;
 
+    
+
+   
     //referenz zum audio
     public start_audio_script sas;
 
@@ -33,6 +36,8 @@ public class Controller : MonoBehaviourSingleton<Controller>
 
     public void PrepareClouds()
     {
+        int i = 0;
+
         foreach (var word in WordList)
         {
             //word erstellen
@@ -40,7 +45,8 @@ public class Controller : MonoBehaviourSingleton<Controller>
             x.GetComponentInChildren<Text>().text = word.WordString;
             x.GetComponent<tw_button_script>().Word = word;
             //zufällig eine pos aus der liste entnehmen
-            var randomPos = AllowedPositions[Random.Range(0, AllowedPositions.Count)];
+            //var randomPos = AllowedPositions[Random.Range(0, AllowedPositions.Count)];
+            var randomPos = AllowedPositions[i];
             x.GetComponent<RectTransform>().anchoredPosition = randomPos;
             AllowedPositions.Remove(randomPos);
         }
