@@ -5,23 +5,29 @@ using UnityEngine.UI;
 
 public class Controller : MonoBehaviourSingleton<Controller>
 {
-    public int MaxClicks = 4;
+    public int MaxClicks = 3;
+    private int _clicks = 0;
 
     public GameObject CloudWrapper;
     public GameObject CloudPrefabs;
 
-    List<List<Word>> mainList = new List<List<Word>>();
+    //bene: wordlist items werden im inspector referenziert
+    //neues Item erstellt, das du in deinen Assets einfach hinzufügen kannst, habe 2 bsp Wortlisten erstellt, siehe Inspector beim Controller
+    public List<WordListItem> MainWordList = new List<WordListItem>();
 
-    public List<Word> WordList;
-    public List<Word> WordList2;
-    public List<Word> WordList3;
-    public List<Word> WordList4;
-    public List<Word> WordList5;
-    public List<Word> WordList6;
-    public List<Word> WordList7;
-    public List<Word> WordList8;
-    public List<Word> WordList9;
-    public List<Word> WordList10;
+    //bene: counter für den index zur aktuellen wordliste
+    private int _listCounter = 0;
+
+    //public List<Word> WordList;
+    //public List<Word> WordList2;
+    //public List<Word> WordList3;
+    //public List<Word> WordList4;
+    //public List<Word> WordList5;
+    //public List<Word> WordList6;
+    //public List<Word> WordList7;
+    //public List<Word> WordList8;
+    //public List<Word> WordList9;
+    //public List<Word> WordList10;
 
     public List<Vector2> AllowedPositions;
 
@@ -30,23 +36,22 @@ public class Controller : MonoBehaviourSingleton<Controller>
 
     void Start()
     {
-        mainList.Add(WordList);
-        mainList.Add(WordList2);
-        mainList.Add(WordList3);
-        mainList.Add(WordList4);
-        mainList.Add(WordList5);
-        mainList.Add(WordList6);
-        mainList.Add(WordList7);
-        mainList.Add(WordList8);
-        mainList.Add(WordList9);
-        mainList.Add(WordList10);
+        //mainList.Add(WordList);
+        //mainList.Add(WordList2);
+        //mainList.Add(WordList3);
+        //mainList.Add(WordList4);
+        //mainList.Add(WordList5);
+        //mainList.Add(WordList6);
+        //mainList.Add(WordList7);
+        //mainList.Add(WordList8);
+        //mainList.Add(WordList9);
+        //mainList.Add(WordList10);
 
         PrepareScene();
     }
 
     public void PrepareScene()
     {
-        
         /*
         for (var i = 0; i < 10; i++)
         {
@@ -54,10 +59,10 @@ public class Controller : MonoBehaviourSingleton<Controller>
         }
         **/
 
-        PrepareClouds(mainList[0]);
+        //liste mit dem aktuellen counter übergeben
+        PrepareClouds(MainWordList[_listCounter]);
 
         StartGame();
-        
     }
 
     public void StartGame()
@@ -65,11 +70,11 @@ public class Controller : MonoBehaviourSingleton<Controller>
         sas.PlayAudioClip();
     }
 
-    public void PrepareClouds(List<Word> subList)
+    public void PrepareClouds(WordListItem subList)
     {
         int i = 0;
 
-        foreach (var word in subList)
+        foreach (var word in subList.WordList)
         {
             //word erstellen
             var x = Instantiate(CloudPrefabs, CloudWrapper.transform);
@@ -79,19 +84,25 @@ public class Controller : MonoBehaviourSingleton<Controller>
             //var randomPos = AllowedPositions[Random.Range(0, AllowedPositions.Count)];
             var randomPos = AllowedPositions[i];
             x.GetComponent<RectTransform>().anchoredPosition = randomPos;
-            AllowedPositions.Remove(randomPos);
+            //AllowedPositions.Remove(randomPos); <--- eher unsauber die liste zu verändern, da sonst der index durcheinander kommt
+            //bene: einfach i erhöhen hier, liste muss nicht geleert werden
+            i++;
         }
-       
     }
-    
+
     public void CleanupScene()
     {
+        //bene: counter erhöhen für den nächsten durchgang
+        _listCounter++;
+        //bene: click counter zurücksetzen
+        _clicks = 0;
+
         foreach (Transform child in CloudWrapper.transform)
         {
             Destroy(child.gameObject);
         }
     }
-    
+
     public void ChangeScene()
     {
         var SceneNumber = 2;
@@ -103,6 +114,15 @@ public class Controller : MonoBehaviourSingleton<Controller>
 
     public void CloudWasClicked(Word word)
     {
-        Debug.Log(word.WordString);
+        //Bene: anzahl der clicks erhöhen und schaun ob das limit erreicht ist
+        _clicks++;
+        if (_clicks == MaxClicks)
+        {
+            //bene: wenn ja, dann szene cleanen und nächste preparen
+            Debug.Log("nächster Durchgang wird gestartet");
+            //in der cleanup funktion wird der counter für die mainliste erhöht, damit das nächste element in der liste prepared werden kann
+            CleanupScene();
+            PrepareScene();
+        }
     }
 }
