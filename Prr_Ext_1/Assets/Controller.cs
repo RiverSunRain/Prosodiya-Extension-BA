@@ -18,16 +18,18 @@ public class Controller : MonoBehaviourSingleton<Controller>
     //bene: counter für den index zur aktuellen wordliste
     private int _listCounter = 0;
 
-    //public List<Word> WordList;
-    //public List<Word> WordList2;
-    //public List<Word> WordList3;
-    //public List<Word> WordList4;
-    //public List<Word> WordList5;
-    //public List<Word> WordList6;
-    //public List<Word> WordList7;
-    //public List<Word> WordList8;
-    //public List<Word> WordList9;
-    //public List<Word> WordList10;
+    /*
+    public List<WordListItem> WordList;
+    public List<Word> WordList2;
+    public List<Word> WordList3;
+    public List<Word> WordList4;
+    public List<Word> WordList5;
+    public List<Word> WordList6;
+    public List<Word> WordList7;
+    public List<Word> WordList8;
+    public List<Word> WordList9;
+    public List<Word> WordList10;
+    **/
 
     public List<Vector2> AllowedPositions;
 
@@ -36,17 +38,18 @@ public class Controller : MonoBehaviourSingleton<Controller>
 
     void Start()
     {
-        //mainList.Add(WordList);
-        //mainList.Add(WordList2);
-        //mainList.Add(WordList3);
-        //mainList.Add(WordList4);
-        //mainList.Add(WordList5);
-        //mainList.Add(WordList6);
-        //mainList.Add(WordList7);
-        //mainList.Add(WordList8);
-        //mainList.Add(WordList9);
-        //mainList.Add(WordList10);
-
+        /*
+        MainWordList.Add(WordList);
+        MainWordList.Add(WordList2);
+        MainWordList.Add(WordList3);
+        MainWordList.Add(WordList4);
+        MainWordList.Add(WordList5);
+        MainWordList.Add(WordList6);
+        MainWordList.Add(WordList7);
+        MainWordList.Add(WordList8);
+        MainWordList.Add(WordList9);
+        MainWordList.Add(WordList10);
+        **/
         PrepareScene();
     }
 
@@ -116,7 +119,7 @@ public class Controller : MonoBehaviourSingleton<Controller>
     {
         //Bene: anzahl der clicks erhöhen und schaun ob das limit erreicht ist
         _clicks++;
-        if (_clicks == MaxClicks)
+        if (_clicks == MaxClicks || word.Distractor == false)
         {
             //bene: wenn ja, dann szene cleanen und nächste preparen
             Debug.Log("nächster Durchgang wird gestartet");
