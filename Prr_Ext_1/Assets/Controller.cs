@@ -126,16 +126,26 @@ public class Controller : MonoBehaviourSingleton<Controller>
     {
         //Bene: anzahl der clicks erhöhen und schaun ob das limit erreicht ist
         _clicks++;
+
         if (_clicks == MaxClicks || word.Distractor == false)
         {
+            //sas.PlayPositiveFeedbackSound();
+            //sas.playAudioSequentially();
             sas.PlayPositiveFeedback();
+
             AnimationScript.Instance.s = true;
             AnimationScript._instance.Update();
+
             //bene: wenn ja, dann szene cleanen und nächste preparen
             Debug.Log("nächster Durchgang wird gestartet");
+
             //in der cleanup funktion wird der counter für die mainliste erhöht, damit das nächste element in der liste prepared werden kann
             CleanupScene();
+
             PrepareScene();
+
+        } else if (word.Distractor == true) {
+            sas.PlayNegativeFeedback();
         }
     }
 }

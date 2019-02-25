@@ -320,6 +320,26 @@ MonoBehaviour:
   PositiveFeedbackSoundClip: {fileID: 8300000, guid: 023940ce0ed6b5549bf16a29d45ed95f,
     type: 3}
   PositiveFeedbackSoundSource: {fileID: 422016466}
+  PositiveFeedbackListClip:
+  - {fileID: 8300000, guid: 5b6d2963fc747d64ca93d1f20517eb12, type: 3}
+  - {fileID: 8300000, guid: 8ed586945f13ca34f95d42a3de712491, type: 3}
+  - {fileID: 8300000, guid: 6ad79ac2b198dbd43a33c392ae33f8fd, type: 3}
+  - {fileID: 8300000, guid: a3682b6f959b07e47acf91c89d094596, type: 3}
+  - {fileID: 8300000, guid: 62535de78f7c7b94f8f04ad2121bee45, type: 3}
+  - {fileID: 8300000, guid: f0ea4d186f41f6b47bbbec32000cd461, type: 3}
+  - {fileID: 8300000, guid: 166bb2dd12486794f8bdd7460dfac066, type: 3}
+  - {fileID: 8300000, guid: c8c72995eb8aa7f49bf7d953b71a3bc9, type: 3}
+  PositiveFeedbackSource: {fileID: 422016466}
+  NegativeFeedbackListClip:
+  - {fileID: 8300000, guid: 8046ed7d720d4e6488c5a4afa0f146b0, type: 3}
+  - {fileID: 8300000, guid: 889a1583265d38e498191ffad0d9e8ea, type: 3}
+  - {fileID: 8300000, guid: 720ea46f36f09244aba61957c5ce832c, type: 3}
+  - {fileID: 8300000, guid: 8a2ac32cfd6a7c14788a652d7638402d, type: 3}
+  - {fileID: 8300000, guid: 6d4f2fbc3470a3a48b0d4f9c5f21330b, type: 3}
+  - {fileID: 8300000, guid: 5bb7c9046d694274996935638ed30b88, type: 3}
+  - {fileID: 8300000, guid: 337c6657a1cad144d8b15761d83a8aae, type: 3}
+  - {fileID: 8300000, guid: e717abe66e34151429440b5f727a6c60, type: 3}
+  NegativeFeedbackSource: {fileID: 422016466}
 --- !u!82 &422016466
 AudioSource:
   m_ObjectHideFlags: 0
