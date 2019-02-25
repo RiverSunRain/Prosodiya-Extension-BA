@@ -69,7 +69,7 @@ public class Controller : MonoBehaviourSingleton<Controller>
         **/
 
         //liste mit dem aktuellen counter übergeben
-        sas.PlayAudioClip();
+        //sas.PlayAudioClip();
         PrepareClouds(MainWordList[_listCounter]);
         
         StartGame();
@@ -128,6 +128,7 @@ public class Controller : MonoBehaviourSingleton<Controller>
         _clicks++;
         if (_clicks == MaxClicks || word.Distractor == false)
         {
+            sas.PlayPositiveFeedback();
             AnimationScript.Instance.s = true;
             AnimationScript._instance.Update();
             //bene: wenn ja, dann szene cleanen und nächste preparen

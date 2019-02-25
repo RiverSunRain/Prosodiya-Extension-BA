@@ -214,7 +214,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 77378526}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -206.5, z: 0}
+  m_LocalPosition: {x: 0, y: -207, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 499414803}
@@ -317,6 +317,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MusicClip: {fileID: 8300000, guid: d2a20108eb5a8e34a82135b9bd144e1c, type: 3}
   MusicSource: {fileID: 422016466}
+  PositiveFeedbackSoundClip: {fileID: 8300000, guid: 023940ce0ed6b5549bf16a29d45ed95f,
+    type: 3}
+  PositiveFeedbackSoundSource: {fileID: 422016466}
 --- !u!82 &422016466
 AudioSource:
   m_ObjectHideFlags: 0
@@ -526,7 +529,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 499414799}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 599, y: 316.5, z: 0}
+  m_LocalPosition: {x: 599, y: 317, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 441116471}
@@ -621,7 +624,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 636298966}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.4, y: 0.49, z: 0}
+  m_LocalPosition: {x: 8.4, y: -2.27, z: 0}
   m_LocalScale: {x: 1.1637164, y: 1.1637164, z: 1.1637164}
   m_Children: []
   m_Father: {fileID: 0}
