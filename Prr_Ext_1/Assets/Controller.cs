@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class Controller : MonoBehaviourSingleton<Controller>
 {
     public int MaxClicks = 3;
@@ -10,6 +11,7 @@ public class Controller : MonoBehaviourSingleton<Controller>
 
     public GameObject CloudWrapper;
     public GameObject CloudPrefabs;
+    bool JumpTrigger = false;
 
     //bene: wordlist items werden im inspector referenziert
     //neues Item erstellt, das du in deinen Assets einfach hinzufügen kannst, habe 2 bsp Wortlisten erstellt, siehe Inspector beim Controller
@@ -36,6 +38,7 @@ public class Controller : MonoBehaviourSingleton<Controller>
     //referenz zum audio
     public start_audio_script sas;
 
+    
     void Start()
     {
         /*
@@ -50,8 +53,11 @@ public class Controller : MonoBehaviourSingleton<Controller>
         MainWordList.Add(WordList9);
         MainWordList.Add(WordList10);
         **/
+        
         PrepareScene();
     }
+
+    
 
     public void PrepareScene()
     {
@@ -63,14 +69,15 @@ public class Controller : MonoBehaviourSingleton<Controller>
         **/
 
         //liste mit dem aktuellen counter übergeben
+        sas.PlayAudioClip();
         PrepareClouds(MainWordList[_listCounter]);
-
+        
         StartGame();
     }
 
     public void StartGame()
     {
-        sas.PlayAudioClip();
+        
     }
 
     public void PrepareClouds(WordListItem subList)
@@ -121,6 +128,8 @@ public class Controller : MonoBehaviourSingleton<Controller>
         _clicks++;
         if (_clicks == MaxClicks || word.Distractor == false)
         {
+            AnimationScript.Instance.s = true;
+            AnimationScript._instance.Update();
             //bene: wenn ja, dann szene cleanen und nächste preparen
             Debug.Log("nächster Durchgang wird gestartet");
             //in der cleanup funktion wird der counter für die mainliste erhöht, damit das nächste element in der liste prepared werden kann
