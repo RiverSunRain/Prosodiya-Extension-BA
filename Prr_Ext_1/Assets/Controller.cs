@@ -146,6 +146,8 @@ public class Controller : MonoBehaviourSingleton<Controller>
 
         } else if (word.Distractor == true) {
             sas.PlayNegativeFeedback();
+            AnimationScript.Instance.t = true;
+            AnimationScript._instance.Update();
         }
     }
 }
