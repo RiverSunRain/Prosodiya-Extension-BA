@@ -17,6 +17,9 @@ public class Controller : MonoBehaviourSingleton<Controller>
     //neues Item erstellt, das du in deinen Assets einfach hinzufügen kannst, habe 2 bsp Wortlisten erstellt, siehe Inspector beim Controller
     public List<WordListItem> MainWordList = new List<WordListItem>();
 
+    public WordListItem CurrentWordListItem;
+
+
     //bene: counter für den index zur aktuellen wordliste
     private int _listCounter = 0;
 
@@ -70,7 +73,8 @@ public class Controller : MonoBehaviourSingleton<Controller>
 
         //liste mit dem aktuellen counter übergeben
         //sas.PlayAudioClip();
-        PrepareClouds(MainWordList[_listCounter]);
+        CurrentWordListItem = MainWordList[_listCounter];
+        PrepareClouds(CurrentWordListItem);
         
         StartGame();
     }
