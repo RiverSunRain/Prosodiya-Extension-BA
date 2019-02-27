@@ -11,7 +11,7 @@ public class tw_button_script : MonoBehaviour
     public void CloudClicked()
     {
         GetComponent<Button>().interactable = false;
-        Controller.Instance.CloudWasClicked(Word);
+        StartCoroutine(Controller.Instance.CloudWasClicked(Word));
         StartCoroutine(DissolveAnimation());
     }
 

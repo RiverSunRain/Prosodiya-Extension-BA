@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -81,7 +82,10 @@ public class Controller : MonoBehaviourSingleton<Controller>
 
     public void StartGame()
     {
-        
+        foreach (var btn in FindObjectsOfType<Button>())
+        {
+            btn.interactable = true;
+        }
     }
 
     public void PrepareClouds(WordListItem subList)
@@ -126,7 +130,7 @@ public class Controller : MonoBehaviourSingleton<Controller>
         }
     }
 
-    public void CloudWasClicked(Word word)
+    public IEnumerator CloudWasClicked(Word word)
     {
         //Bene: anzahl der clicks erhöhen und schaun ob das limit erreicht ist
         _clicks++;
@@ -138,7 +142,15 @@ public class Controller : MonoBehaviourSingleton<Controller>
             sas.PlayPositiveFeedback();
 
             AnimationScript.Instance.s = true;
-            AnimationScript._instance.Update();
+            //wait for animation to finish
+            AnimationScript.Instance.UpdateAnimation();
+
+            foreach (var btn in FindObjectsOfType<Button>())
+            {
+                btn.interactable = false;
+            }
+
+            yield return new WaitForSeconds(1f);
 
             //bene: wenn ja, dann szene cleanen und nächste preparen
             Debug.Log("nächster Durchgang wird gestartet");
@@ -151,7 +163,7 @@ public class Controller : MonoBehaviourSingleton<Controller>
         } else if (word.Distractor == true) {
             sas.PlayNegativeFeedback();
             AnimationScript.Instance.t = true;
-            AnimationScript._instance.Update();
+            AnimationScript._instance.UpdateAnimation();
         }
     }
 }

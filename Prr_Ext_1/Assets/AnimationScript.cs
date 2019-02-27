@@ -15,8 +15,8 @@ public class AnimationScript : MonoBehaviourSingleton<AnimationScript>
         rb = GetComponent<Rigidbody2D>();
 	}
 	
-	// Update is called once per frame
-	public void Update () {
+	// UpdateAnimation is called once per frame
+	public void UpdateAnimation () {
         //rb.velocity = new Vector2(3, rb.velocity.y);
 
         if (s == true) {
