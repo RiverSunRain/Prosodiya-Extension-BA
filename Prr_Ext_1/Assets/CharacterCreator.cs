@@ -7,13 +7,28 @@ using UnityEngine.SceneManagement;
 
 public class CharacterCreator : MonoBehaviour {
 
-    public InputField SubjectNumberField;
-    private string number;
+    public InputField AgeInput;
+    public InputField GenderInput;
+    public InputField HandednessInput;
+    public InputField SubjectNumberInput;
+
+    private string age;
+    private string gender;
+    private string handedness;
+    private string subjectNumber;
 
     public void OnSubmit() {
 
-        number = SubjectNumberField.text;
-        Debug.Log("Subject number: " + number);
+        age = AgeInput.text;
+        gender = GenderInput.text;
+        handedness = HandednessInput.text;
+        subjectNumber = SubjectNumberInput.text;
+
+        Debug.Log("Age: " + age);
+        Debug.Log("Gender: " + gender);
+        Debug.Log("Handedness: " + handedness);
+        Debug.Log("Subject number: " + subjectNumber);
+
         SceneManager.LoadScene("Scene_1");
     }
 }
