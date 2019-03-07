@@ -107,6 +107,8 @@ public class Controller : MonoBehaviourSingleton<Controller>
             i++;
         }
         /*
+         * Tests if data from Input Scene have been saved
+         * 
         Debug.Log("Age: " + CharacterCreator._instance.AgeInput.text);
         Debug.Log("Gender: " + CharacterCreator._instance.GenderInput.text);
         Debug.Log("Handedness: " + CharacterCreator._instance.HandednessInput.text);
