@@ -5,7 +5,8 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
 
-public class CharacterCreator : MonoBehaviour {
+public class CharacterCreator : MonoBehaviourSingleton<CharacterCreator>
+{
 
     public InputField AgeInput;
     public InputField GenderInput;
@@ -28,6 +29,11 @@ public class CharacterCreator : MonoBehaviour {
         Debug.Log("Gender: " + gender);
         Debug.Log("Handedness: " + handedness);
         Debug.Log("Subject number: " + subjectNumber);
+
+        CharacterCreator.DontDestroyOnLoad(AgeInput);
+        CharacterCreator.DontDestroyOnLoad(GenderInput);
+        CharacterCreator.DontDestroyOnLoad(HandednessInput);
+        CharacterCreator.DontDestroyOnLoad(SubjectNumberInput);
 
         SceneManager.LoadScene("Scene_1");
     }

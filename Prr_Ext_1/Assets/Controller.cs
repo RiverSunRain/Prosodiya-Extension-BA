@@ -106,6 +106,12 @@ public class Controller : MonoBehaviourSingleton<Controller>
             //bene: einfach i erhöhen hier, liste muss nicht geleert werden
             i++;
         }
+        /*
+        Debug.Log("Age: " + CharacterCreator._instance.AgeInput.text);
+        Debug.Log("Gender: " + CharacterCreator._instance.GenderInput.text);
+        Debug.Log("Handedness: " + CharacterCreator._instance.HandednessInput.text);
+        Debug.Log("Subject number: " + CharacterCreator._instance.SubjectNumberInput.text);
+        **/
     }
 
     public void CleanupScene()
