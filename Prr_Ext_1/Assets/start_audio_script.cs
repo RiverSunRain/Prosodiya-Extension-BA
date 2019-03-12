@@ -20,6 +20,8 @@ public class start_audio_script : MonoBehaviour
     public List<AudioClip> NegativeFeedbackListClip;
     public AudioSource NegativeFeedbackSource;
 
+    public AudioClip HelpAudioClip;
+    public AudioSource HelpAudioSource;
 
     // Use this for initialization
     public void PlayAudioClip()
@@ -44,6 +46,18 @@ public class start_audio_script : MonoBehaviour
     {
         NegativeFeedbackSource.clip = NegativeFeedbackListClip[Random.Range(0, 8)];
         NegativeFeedbackSource.Play();
+    }
+
+    public void PlayHelpAudio()
+    {
+        HelpAudioSource.clip = HelpAudioClip;
+        HelpAudioSource.Play();            
+    }
+
+    public void StopHelpAudio()
+    {
+        HelpAudioSource.clip = HelpAudioClip;
+        HelpAudioSource.Stop();
     }
 
     /*
