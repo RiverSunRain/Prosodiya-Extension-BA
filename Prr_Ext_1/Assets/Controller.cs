@@ -162,7 +162,7 @@ public class Controller : MonoBehaviourSingleton<Controller>
         {
             //sas.PlayPositiveFeedbackSound();
             //sas.playAudioSequentially();
-            sas.PlayPositiveFeedback();
+              sas.PlayPositiveFeedback();
 
             AnimationScript.Instance.s = true;
             //wait for animation to finish

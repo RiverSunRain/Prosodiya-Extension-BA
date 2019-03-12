@@ -10,8 +10,14 @@ public class AnimationScript : MonoBehaviourSingleton<AnimationScript>
     public bool right = false;
     public bool left = true;
     public Rigidbody2D rb;
-	// Use this for initialization
-	void Start () {
+
+    public GameObject yellowBlob;
+
+    Vector2 v1 = new Vector2(1, 0);
+    Vector2 v2 = new Vector2(-1, 0);
+
+    // Use this for initialization
+    void Start () {
         rb = GetComponent<Rigidbody2D>();
 	}
 	
@@ -20,9 +26,11 @@ public class AnimationScript : MonoBehaviourSingleton<AnimationScript>
         //rb.velocity = new Vector2(3, rb.velocity.y);
 
         if (s == true) {
+            LeanTween.pause(yellowBlob);
             rb.velocity = new Vector2(rb.velocity.x, 5);
             s = false;
         } else if(t == true){
+            /*
             if (left == true) {
                 rb.velocity = new Vector2(2, rb.velocity.y);
                 right = true;
@@ -32,9 +40,11 @@ public class AnimationScript : MonoBehaviourSingleton<AnimationScript>
                 left = true;
                 right = false;
             }
-            
-            
             t = false;
+            **/
+            LeanTween.moveX(yellowBlob, 8, 0.1f).setLoopPingPong();
+            
         }
+        
 	}
 }

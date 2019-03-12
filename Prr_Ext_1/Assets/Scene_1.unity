@@ -418,7 +418,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 6dffd91f96c3d5247b4513f0a1511b5a, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -452,6 +452,8 @@ MonoBehaviour:
   NegativeFeedbackSource: {fileID: 0}
   HelpAudioClip: {fileID: 8300000, guid: b60599d9b1b2d9a4c803c56fca8afefc, type: 3}
   HelpAudioSource: {fileID: 422016466}
+  adSource: {fileID: 0}
+  HelpArray: []
 --- !u!1 &301719345
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,6 +583,8 @@ MonoBehaviour:
   NegativeFeedbackSource: {fileID: 422016466}
   HelpAudioClip: {fileID: 0}
   HelpAudioSource: {fileID: 0}
+  adSource: {fileID: 422016466}
+  HelpArray: []
 --- !u!82 &422016466
 AudioSource:
   m_ObjectHideFlags: 0
@@ -964,6 +968,7 @@ MonoBehaviour:
   right: 0
   left: 1
   rb: {fileID: 0}
+  yellowBlob: {fileID: 636298966}
 --- !u!1 &994075197
 GameObject:
   m_ObjectHideFlags: 0
