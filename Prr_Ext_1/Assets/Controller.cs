@@ -43,6 +43,7 @@ public class Controller : MonoBehaviourSingleton<Controller>
     public start_audio_script sas;
 
     
+    
     void Start()
     {
         /*
@@ -65,6 +66,9 @@ public class Controller : MonoBehaviourSingleton<Controller>
 
     public void PrepareScene()
     {
+        Debug.Log(_listCounter);
+
+
         /*
         for (var i = 0; i < 10; i++)
         {
@@ -74,10 +78,19 @@ public class Controller : MonoBehaviourSingleton<Controller>
 
         //liste mit dem aktuellen counter übergeben
         //sas.PlayAudioClip();
-        CurrentWordListItem = MainWordList[_listCounter];
-        PrepareClouds(CurrentWordListItem);
-        
-        StartGame();
+
+
+
+        if (_listCounter < 10)
+        {
+            CurrentWordListItem = MainWordList[_listCounter];
+            PrepareClouds(CurrentWordListItem);
+            StartGame();
+        }
+        else {
+            SceneManager.LoadScene("End_Screen");
+        }
+       
     }
 
     public void StartGame()
@@ -123,6 +136,8 @@ public class Controller : MonoBehaviourSingleton<Controller>
         //bene: click counter zurücksetzen
         _clicks = 0;
 
+        
+
         foreach (Transform child in CloudWrapper.transform)
         {
             Destroy(child.gameObject);
@@ -162,6 +177,8 @@ public class Controller : MonoBehaviourSingleton<Controller>
 
             //bene: wenn ja, dann szene cleanen und nächste preparen
             Debug.Log("nächster Durchgang wird gestartet");
+
+         
 
             //in der cleanup funktion wird der counter für die mainliste erhöht, damit das nächste element in der liste prepared werden kann
             CleanupScene();
