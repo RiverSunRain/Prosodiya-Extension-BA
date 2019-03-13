@@ -162,7 +162,7 @@ public class Controller : MonoBehaviourSingleton<Controller>
         {
             //sas.PlayPositiveFeedbackSound();
             //sas.playAudioSequentially();
-              sas.PlayPositiveFeedback();
+            StartCoroutine(sas.PlayPositiveFeedback());
 
             AnimationScript.Instance.s = true;
             //wait for animation to finish
@@ -173,7 +173,7 @@ public class Controller : MonoBehaviourSingleton<Controller>
                 btn.interactable = false;
             }
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
 
             //bene: wenn ja, dann szene cleanen und nächste preparen
             Debug.Log("nächster Durchgang wird gestartet");

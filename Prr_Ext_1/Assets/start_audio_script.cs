@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class start_audio_script : MonoBehaviour
 {
-
-   
-
     public AudioClip MusicClip;
 
     public AudioSource MusicSource;
@@ -29,6 +26,7 @@ public class start_audio_script : MonoBehaviour
         MusicSource.clip = MusicClip;
         MusicSource.Play();
     }
+
     /*
     public void PlayPositiveFeedbackSound() {
 
@@ -36,10 +34,11 @@ public class start_audio_script : MonoBehaviour
         PositiveFeedbackSoundSource.Play();
     }
     **/
-    public void PlayPositiveFeedback()
+    public IEnumerator PlayPositiveFeedback()
     {
-        PositiveFeedbackSource.clip = PositiveFeedbackListClip[Random.Range(0,8)];
-        PositiveFeedbackSource.Play();
+        yield return StartCoroutine(playAudioSequentially(PositiveFeedbackSoundClip, PositiveFeedbackListClip[Random.Range(0, 8)]));
+        //PositiveFeedbackSource.clip = PositiveFeedbackListClip[Random.Range(0, 8)];
+        //PositiveFeedbackSource.Play();
     }
 
     public void PlayNegativeFeedback()
@@ -51,7 +50,7 @@ public class start_audio_script : MonoBehaviour
     public void PlayHelpAudio()
     {
         HelpAudioSource.clip = HelpAudioClip;
-        HelpAudioSource.Play();            
+        HelpAudioSource.Play();
     }
 
     public void StopHelpAudio()
@@ -60,32 +59,24 @@ public class start_audio_script : MonoBehaviour
         HelpAudioSource.Stop();
     }
 
-    /*
-    public AudioSource adSource;
-    public AudioClip[] HelpArray;
-    
-    public IEnumerator playAudioSequentially()
+
+    //public AudioSource adSource;
+    //public AudioClip[] HelpArray;
+
+    public IEnumerator playAudioSequentially(AudioClip a1, AudioClip a2)
     {
-        HelpArray[0] = PositiveFeedbackSoundClip;
-        HelpArray[1] = PositiveFeedbackListClip[Random.Range(0, 8)];
-
-        yield return null;
-
-        //1.Loop through each AudioClip
-        for (int i = 0; i < 2; i++)
+        var tmpList = new List<AudioClip> {a1, a2};
+        foreach (var clip in tmpList)
         {
-            //2.Assign current AudioClip to audiosource
-            adSource.Stop();
-            adSource.clip = HelpArray[i];
+            // 2.Assign current AudioClip to audiosource
+            PositiveFeedbackSource.Stop();
+            PositiveFeedbackSource.clip = clip;
 
             //3.Play Audio
-            adSource.Play();
+            PositiveFeedbackSource.Play();
 
             //4.Wait for it to finish playing
-            yield return new WaitForSeconds(adSource.clip.length);
+            yield return new WaitForSeconds(PositiveFeedbackSource.clip.length);
         }
     }
-    **/
-
 }
-

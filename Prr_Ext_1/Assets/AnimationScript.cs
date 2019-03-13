@@ -42,7 +42,7 @@ public class AnimationScript : MonoBehaviourSingleton<AnimationScript>
             }
             t = false;
             **/
-            LeanTween.moveX(yellowBlob, 8, 0.1f).setLoopPingPong();
+            LeanTween.moveX(yellowBlob, 8, 0.1f).setLoopPingPong(4);
             
         }
         
