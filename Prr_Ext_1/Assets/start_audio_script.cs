@@ -36,15 +36,19 @@ public class start_audio_script : MonoBehaviour
     **/
     public IEnumerator PlayPositiveFeedback()
     {
-        yield return StartCoroutine(playAudioSequentially(PositiveFeedbackSoundClip, PositiveFeedbackListClip[Random.Range(0, 8)]));
+        var a1 = PositiveFeedbackSoundClip;
+        var a2 = PositiveFeedbackListClip[Random.Range(0, 8)];
+        StartCoroutine(playAudioSequentially(a1, a2));
+        yield return StartCoroutine(playAudioSequentially(a1, a2));
         //PositiveFeedbackSource.clip = PositiveFeedbackListClip[Random.Range(0, 8)];
         //PositiveFeedbackSource.Play();
     }
 
-    public void PlayNegativeFeedback()
+    public float PlayNegativeFeedback()
     {
         NegativeFeedbackSource.clip = NegativeFeedbackListClip[Random.Range(0, 8)];
         NegativeFeedbackSource.Play();
+        return NegativeFeedbackSource.clip.length;
     }
 
     public void PlayHelpAudio()

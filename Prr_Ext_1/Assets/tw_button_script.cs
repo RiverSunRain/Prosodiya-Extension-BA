@@ -18,7 +18,7 @@ public class tw_button_script : MonoBehaviour
     IEnumerator DissolveAnimation()
     {
         yield return new WaitForSeconds(1f);
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
 }

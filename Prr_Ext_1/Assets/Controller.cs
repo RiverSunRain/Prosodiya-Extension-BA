@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Prosodiya;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -42,8 +43,7 @@ public class Controller : MonoBehaviourSingleton<Controller>
     //referenz zum audio
     public start_audio_script sas;
 
-    
-    
+
     void Start()
     {
         /*
@@ -58,11 +58,16 @@ public class Controller : MonoBehaviourSingleton<Controller>
         MainWordList.Add(WordList9);
         MainWordList.Add(WordList10);
         **/
-        
+
         PrepareScene();
+
+        //prepare side pb
+        SideProgressBarScript.Instance.PrepareSideProgressBar(MaxClicks);
+
+        //prepare top pb
+        TopProgressBar.Instance.Prepare(10);
     }
 
-    
 
     public void PrepareScene()
     {
@@ -80,25 +85,28 @@ public class Controller : MonoBehaviourSingleton<Controller>
         //sas.PlayAudioClip();
 
 
-
         if (_listCounter < 10)
         {
             CurrentWordListItem = MainWordList[_listCounter];
             PrepareClouds(CurrentWordListItem);
             StartGame();
         }
-        else {
+        else
+        {
             SceneManager.LoadScene("End_Screen");
         }
-       
     }
 
     public void StartGame()
     {
+        Debug.Log("1 ##");
         foreach (var btn in FindObjectsOfType<Button>())
         {
             btn.interactable = true;
         }
+
+        //placeholder
+        TopProgressBar.Instance.UpdateProgress();
     }
 
     public void PrepareClouds(WordListItem subList)
@@ -131,12 +139,12 @@ public class Controller : MonoBehaviourSingleton<Controller>
 
     public void CleanupScene()
     {
+        Debug.Log("3 ##");
         //bene: counter erhöhen für den nächsten durchgang
         _listCounter++;
         //bene: click counter zurücksetzen
         _clicks = 0;
 
-        
 
         foreach (Transform child in CloudWrapper.transform)
         {
@@ -155,14 +163,38 @@ public class Controller : MonoBehaviourSingleton<Controller>
 
     public IEnumerator CloudWasClicked(Word word)
     {
+        /*
+        *cloud clicked
+            interactable = false
+        wenn distr
+
+        if is last
+            w8 feedback pos +animation blob
+
+        cleanup + (prep next)
+        else
+        w8 animation blob
+            animation dissolve + destroy
+        else
+        w8 feedback pos + animation blob
+            w8 animation cloud to progressbar
+
+        cleanup + (prepare next)
+        */
+
+
+        float animTime;
         //Bene: anzahl der clicks erhöhen und schaun ob das limit erreicht ist
         _clicks++;
 
-        if (_clicks == MaxClicks || word.Distractor == false)
+        if (word.Distractor == false)
         {
+            Debug.Log("4 ##");
+            //pb
+            SideProgressBarScript.Instance.UpdateSideProgressBar(true);
+
             //sas.PlayPositiveFeedbackSound();
             //sas.playAudioSequentially();
-            StartCoroutine(sas.PlayPositiveFeedback());
 
             AnimationScript.Instance.s = true;
             //wait for animation to finish
@@ -173,22 +205,28 @@ public class Controller : MonoBehaviourSingleton<Controller>
                 btn.interactable = false;
             }
 
-            yield return new WaitForSeconds(2f);
+            Debug.Log("5 ##");
+            yield return sas.PlayPositiveFeedback();
 
             //bene: wenn ja, dann szene cleanen und nächste preparen
             Debug.Log("nächster Durchgang wird gestartet");
 
-         
 
             //in der cleanup funktion wird der counter für die mainliste erhöht, damit das nächste element in der liste prepared werden kann
             CleanupScene();
 
             PrepareScene();
 
-        } else if (word.Distractor == true) {
-            sas.PlayNegativeFeedback();
+            Debug.Log("2 ##");
+        }
+        else
+        {
+            animTime = sas.PlayNegativeFeedback();
             AnimationScript.Instance.t = true;
-            AnimationScript._instance.UpdateAnimation();
+            AnimationScript.Instance.UpdateAnimation();
+            //pb
+            SideProgressBarScript.Instance.UpdateSideProgressBar(false);
+            yield return new WaitForSeconds(animTime);
         }
     }
 }
