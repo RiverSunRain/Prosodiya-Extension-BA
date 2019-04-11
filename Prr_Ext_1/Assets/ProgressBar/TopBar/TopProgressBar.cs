@@ -121,7 +121,7 @@ namespace Prosodiya
         private void FillProgBar(float targetPos, float time = 1f)
         {
             LeanTween.value(InnerFill, TweenProgress, _previousXpos, targetPos, time).setEase(LeanTweenType.easeInOutSine);
-            this.GetComponent<AudioSource>().PlayOneShot(UpdateSound); 
+            //this.GetComponent<AudioSource>().PlayOneShot(UpdateSound); 
         }
 
         private void TweenProgress(float f)

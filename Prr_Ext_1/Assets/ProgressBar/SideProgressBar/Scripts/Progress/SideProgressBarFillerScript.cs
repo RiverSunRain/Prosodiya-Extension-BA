@@ -26,6 +26,7 @@ public class SideProgressBarFillerScript : MonoBehaviour
         //animate celebrate 
         if (lastUpdate)
         {
+            //animation für das letzte update in der sideprogressbar. Großes feuerwerk/explosion nach oben
         }
         else
         {

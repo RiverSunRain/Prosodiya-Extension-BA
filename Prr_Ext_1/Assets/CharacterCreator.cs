@@ -13,27 +13,19 @@ public class CharacterCreator : MonoBehaviourSingleton<CharacterCreator>
     public InputField HandednessInput;
     public InputField SubjectNumberInput;
 
-    private string age;
-    private string gender;
-    private string handedness;
-    private string subjectNumber;
+    public string Age { get; set; }
+    public string Gender { get; set; }
+    public string Handedness { get; set; }
+    public string SubjectNumber { get; set; }
 
     public void OnSubmit() {
 
-        age = AgeInput.text;
-        gender = GenderInput.text;
-        handedness = HandednessInput.text;
-        subjectNumber = SubjectNumberInput.text;
-
-        Debug.Log("Age: " + age);
-        Debug.Log("Gender: " + gender);
-        Debug.Log("Handedness: " + handedness);
-        Debug.Log("Subject number: " + subjectNumber);
-
-        CharacterCreator.DontDestroyOnLoad(AgeInput);
-        CharacterCreator.DontDestroyOnLoad(GenderInput);
-        CharacterCreator.DontDestroyOnLoad(HandednessInput);
-        CharacterCreator.DontDestroyOnLoad(SubjectNumberInput);
+        Age = AgeInput.text;
+        Gender = GenderInput.text;
+        Handedness = HandednessInput.text;
+        SubjectNumber = SubjectNumberInput.text;
+        
+        DontDestroyOnLoad(this.gameObject);
 
         SceneManager.LoadScene("Scene_1");
     }

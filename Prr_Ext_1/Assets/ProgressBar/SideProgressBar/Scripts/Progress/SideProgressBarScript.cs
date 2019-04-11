@@ -61,15 +61,16 @@ public class SideProgressBarScript : MonoBehaviourSingleton<SideProgressBarScrip
         }
     }
 
-    public void UpdateSideProgressBar(bool success)
+    public GameObject UpdateSideProgressBar(bool success)
     {
+        GameObject fillerGoToUpdate = null;
         if (_subTaskCompleted < _totalSubTaskCount)
         {
             // update it
             _subTaskCompleted++;
 
             //get filler to update
-            var fillerGoToUpdate =
+            fillerGoToUpdate =
                 (from filler in _fillerList where filler.name.Equals(_subTaskCompleted.ToString()) select filler)
                 .FirstOrDefault();
             var fillerToUpdate = fillerGoToUpdate.GetComponentInChildren<SideProgressBarFillerScript>();
@@ -86,11 +87,11 @@ public class SideProgressBarScript : MonoBehaviourSingleton<SideProgressBarScrip
                 fillerToUpdate.UpdateFiller(success, true);
             }
         }
-
         else
         {
             // End it
         }
+        return fillerGoToUpdate;
     }
 
     public void ResetSideProgressBar()
