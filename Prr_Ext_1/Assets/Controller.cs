@@ -11,6 +11,11 @@ public class Controller : MonoBehaviourSingleton<Controller>
     public int MaxClicks = 3;
     private int _clicks = 0;
 
+    private bool Hit = true;
+    private bool isLast = false;
+
+    public GameObject Sc;
+
     public GameObject CloudWrapper;
     public GameObject CloudPrefabs;
     bool JumpTrigger = false;
@@ -58,7 +63,7 @@ public class Controller : MonoBehaviourSingleton<Controller>
         MainWordList.Add(WordList9);
         MainWordList.Add(WordList10);
         **/
-
+        
         PrepareScene();
 
         //prepare side pb
@@ -87,14 +92,22 @@ public class Controller : MonoBehaviourSingleton<Controller>
 
         if (_listCounter < 10)
         {
+            if (_listCounter == 9) {
+                isLast = true;
+            }
             CurrentWordListItem = MainWordList[_listCounter];
             PrepareClouds(CurrentWordListItem);
             StartGame();
         }
-        else
-        {
-            SceneManager.LoadScene("End_Screen");
-        }
+        //else
+       //{
+
+            //Sc.text = ScoreScript.ScoreValue.ToString();
+            
+
+            //DontDestroyOnLoad(Sc);
+            //SceneManager.LoadScene("End_Screen");
+        //}
     }
 
     public void StartGame()
@@ -135,6 +148,7 @@ public class Controller : MonoBehaviourSingleton<Controller>
         Debug.Log("Handedness: " + CharacterCreator._instance.HandednessInput.text);
         Debug.Log("Subject number: " + CharacterCreator._instance.SubjectNumberInput.text);
         **/
+        
     }
 
     public void CleanupScene()
@@ -207,26 +221,56 @@ public class Controller : MonoBehaviourSingleton<Controller>
 
             Debug.Log("5 ##");
             yield return sas.PlayPositiveFeedback();
+            //ScoreScript.ScoreValue += 10;
+            setScore(Hit);
 
             //bene: wenn ja, dann szene cleanen und nächste preparen
             Debug.Log("nächster Durchgang wird gestartet");
 
-
             //in der cleanup funktion wird der counter für die mainliste erhöht, damit das nächste element in der liste prepared werden kann
             CleanupScene();
-
             PrepareScene();
 
             Debug.Log("2 ##");
+
+           
         }
         else
         {
-            animTime = sas.PlayNegativeFeedback();
-            AnimationScript.Instance.t = true;
-            AnimationScript.Instance.UpdateAnimation();
-            //pb
-            SideProgressBarScript.Instance.UpdateSideProgressBar(false);
-            yield return new WaitForSeconds(animTime);
+
+            if (isLast)
+            {
+                animTime = sas.PlayNegativeFeedback();
+                Hit = false;
+                AnimationScript.Instance.t = true;
+                AnimationScript.Instance.UpdateAnimation();
+                SideProgressBarScript.Instance.UpdateSideProgressBar(false);
+                yield return new WaitForSeconds(animTime);
+                CleanupScene();
+                PrepareScene();
+            }
+            else {
+                animTime = sas.PlayNegativeFeedback();
+                Hit = false;
+                AnimationScript.Instance.t = true;
+                AnimationScript.Instance.UpdateAnimation();
+                SideProgressBarScript.Instance.UpdateSideProgressBar(false);
+                yield return new WaitForSeconds(animTime);
+            }
+        }
+        if (_listCounter == 10)
+        {
+            SceneManager.LoadScene("End_Screen");
+        }
+    }
+
+    public int setScore(bool directHit) {
+        if (directHit == true) {
+            return ScoreScript.ScoreValue += 15;
+        }
+        else {
+            Hit = true;
+            return ScoreScript.ScoreValue += 10;
         }
     }
 }
