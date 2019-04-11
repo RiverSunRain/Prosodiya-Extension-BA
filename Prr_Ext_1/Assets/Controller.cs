@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Prosodiya;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -26,6 +27,10 @@ public class Controller : MonoBehaviourSingleton<Controller>
 
     public WordListItem CurrentWordListItem;
 
+    private int _maxAllowedClicks
+    {
+        get { return CurrentWordListItem.WordList.Count(x => x.Distractor == false); }
+    }
 
     //bene: counter für den index zur aktuellen wordliste
     private int _listCounter = 0;
@@ -49,16 +54,16 @@ public class Controller : MonoBehaviourSingleton<Controller>
     public start_audio_script sas;
 
 
-    public void PrepareScene()
-    {
-        //prepare scene related stuff
-        StartGame();
-    }
+    //public void PrepareScene()
+    //{
+    //    //prepare scene related stuff
+    //    StartGame();
+    //}
 
-    public void StartGame()
-    {
-        PrepareTask();
-    }
+    //public void StartGame()
+    //{
+    //    PrepareTask();
+    //}
 
     public void PrepareTask()
     {
@@ -104,7 +109,7 @@ public class Controller : MonoBehaviourSingleton<Controller>
 
     public void FinishGame()
     {
-        CleanupScene();
+        //CleanupScene();
     }
 
     public void CleanupSubTask()
@@ -112,9 +117,9 @@ public class Controller : MonoBehaviourSingleton<Controller>
         //###abbruchbedinung subtasks
         //abfrage ob letzte subtask (click abfrage)
         //wenn ja, cleanup Task
-        CleanupTask();
+        if(_clicks >= _maxAllowedClicks) CleanupTask();
         //wenn nicht, dann prepare subtask
-        PrepareSubTask();
+        else PrepareSubTask();
     }
 
     public void CleanupTask()
@@ -127,10 +132,10 @@ public class Controller : MonoBehaviourSingleton<Controller>
         PrepareTask();
     }
 
-    public void CleanupScene()
-    {
-        //Szenenwechsel
-    }
+    //public void CleanupScene()
+    //{
+    //    Szenenwechsel
+    //}
 
 
 
