@@ -49,6 +49,107 @@ public class Controller : MonoBehaviourSingleton<Controller>
     public start_audio_script sas;
 
 
+    public void PrepareScene()
+    {
+        //prepare scene related stuff
+        StartGame();
+    }
+
+    public void StartGame()
+    {
+        PrepareTask();
+    }
+
+    public void PrepareTask()
+    {
+        //prepare top pb
+
+        StartTask();
+    }
+
+    public void StartTask()
+    {
+        PrepareSubTask();
+    }
+
+    public void PrepareSubTask()
+    {
+        //prepare side pb
+
+        //prepare clouds
+
+        StartSubtask();
+    }
+
+    public void StartSubtask()
+    {
+        //jump to finishsubtask, wenn bedinung dafür erfüllt (es wurde geklickt)
+        //bleibt vermutlich leer, da finish subtask von cloudwasclick gecalled wird
+        //FinishSubTask();
+    }
+
+    public void FinishSubTask()
+    {
+        //update side pb
+        //animations here
+
+        CleanupSubTask();
+    }
+
+    public void FinishTask()
+    {
+        //update top pb
+        CleanupTask();
+    }
+
+    public void FinishGame()
+    {
+        CleanupScene();
+    }
+
+    public void CleanupSubTask()
+    {
+        //###abbruchbedinung subtasks
+        //abfrage ob letzte subtask (click abfrage)
+        //wenn ja, cleanup Task
+        CleanupTask();
+        //wenn nicht, dann prepare subtask
+        PrepareSubTask();
+    }
+
+    public void CleanupTask()
+    {
+        //###abbruchbedinung tasks
+        //listcount max erreicht?
+        //ja
+        FinishGame();
+        //nein
+        PrepareTask();
+    }
+
+    public void CleanupScene()
+    {
+        //Szenenwechsel
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     void Start()
     {
         /*
