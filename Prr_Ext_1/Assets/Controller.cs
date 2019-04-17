@@ -54,48 +54,178 @@ public class Controller : MonoBehaviourSingleton<Controller>
     public start_audio_script sas;
 
 
-    //public void PrepareScene()
-    //{
-    //    //prepare scene related stuff
-    //    StartGame();
-    //}
 
-    //public void StartGame()
-    //{
-    //    PrepareTask();
-    //}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //FINAL GAME STRUCTURE
+
+    void Start()
+    {
+        Debug.Log("Start() ##");
+        PrepareScene();   
+    }
+
+    public void PrepareScene()
+    {
+        Debug.Log("PrepareScene() ##");
+        StartGame();        
+        //prepare scene related stuff
+        
+    }
+
+    public void StartGame()
+    {
+        Debug.Log("StartGame() ##");
+        foreach (var btn in FindObjectsOfType<Button>())
+        {
+            btn.interactable = true;
+        }
+        //placeholder
+        //TopProgressBar.Instance.UpdateProgress();
+        PrepareTask();
+    }
 
     public void PrepareTask()
     {
+        Debug.Log("PrepareTask() ##");
+        Hit = true;
         //prepare top pb
-
+        TopProgressBar.Instance.Prepare(10);
         StartTask();
     }
 
     public void StartTask()
     {
+        Debug.Log("StartTask() ##");
+        SideProgressBarScript.Instance.PrepareSideProgressBar(2);
         PrepareSubTask();
     }
 
     public void PrepareSubTask()
     {
+        Debug.Log("PrepareSubTask() ##");
+
+        foreach (var btn in FindObjectsOfType<Button>())
+        {
+            btn.interactable = true;
+        }
+
         //prepare side pb
 
         //prepare clouds
-
+        CurrentWordListItem = MainWordList[_listCounter];
+        PrepareClouds(CurrentWordListItem);
+        
         StartSubtask();
     }
 
+    
     public void StartSubtask()
     {
+        Debug.Log("StartSubTask() ##");
+        
         //jump to finishsubtask, wenn bedinung dafür erfüllt (es wurde geklickt)
         //bleibt vermutlich leer, da finish subtask von cloudwasclick gecalled wird
-        //FinishSubTask();
+        //FinishSubTask(); // DANGEROUS, INFINITE LOOP!
     }
+    
 
     public void FinishSubTask()
     {
+        Debug.Log("FinishSubTask() ##");
         //update side pb
+        
         //animations here
 
         CleanupSubTask();
@@ -103,39 +233,84 @@ public class Controller : MonoBehaviourSingleton<Controller>
 
     public void FinishTask()
     {
+        Debug.Log("FinishTask() ##");
         //update top pb
+        //TopProgressBar.Instance.UpdateProgress();
         CleanupTask();
     }
 
     public void FinishGame()
     {
-        //CleanupScene();
+        Debug.Log("FinishGame() ##");
+        CleanupScene();
     }
 
     public void CleanupSubTask()
     {
+        Debug.Log("CleanUpSubTask() ##");
+
+        
+        //if (_clicks == 3) { SideProgressBarScript.Instance.ResetSideProgressBar(); }
         //###abbruchbedinung subtasks
         //abfrage ob letzte subtask (click abfrage)
         //wenn ja, cleanup Task
-        if(_clicks >= _maxAllowedClicks) CleanupTask();
+        if (_clicks >= 2)
+        {
+            //SideProgressBarScript.Instance.ResetSideProgressBar();
+            FinishTask();
+        }
         //wenn nicht, dann prepare subtask
-        else PrepareSubTask();
+        else
+        {
+            PrepareSubTask();
+        }
     }
 
     public void CleanupTask()
     {
+        Debug.Log("CleanUpTask() ##");
+        SideProgressBarScript.Instance.ResetSideProgressBar();
+
+
+
+
+        //bene: counter erhöhen für den nächsten durchgang
+        _listCounter++;
+        //bene: click counter zurücksetzen
+        _clicks = 0;
+
+        foreach (Transform child in CloudWrapper.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+
+
         //###abbruchbedinung tasks
         //listcount max erreicht?
         //ja
-        FinishGame();
+        if (_listCounter == 10) {
+            FinishGame();
+        }
+        else
+        {
+            PrepareTask();
+        }
+        
         //nein
-        PrepareTask();
+        
     }
 
-    //public void CleanupScene()
-    //{
-    //    Szenenwechsel
-    //}
+    public void CleanupScene()
+    {
+        Debug.Log("CleanupScene() ##");
+        //    Szenenwechsel
+        SceneManager.LoadScene("End_Screen");
+    }
+
+
+
+    // END FINAL GAME STRUCTURE
 
 
 
@@ -155,9 +330,74 @@ public class Controller : MonoBehaviourSingleton<Controller>
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*
     void Start()
     {
-        /*
+        
         MainWordList.Add(WordList);
         MainWordList.Add(WordList2);
         MainWordList.Add(WordList3);
@@ -168,29 +408,29 @@ public class Controller : MonoBehaviourSingleton<Controller>
         MainWordList.Add(WordList8);
         MainWordList.Add(WordList9);
         MainWordList.Add(WordList10);
-        **/
+        
         
         PrepareScene();
 
         //prepare side pb
-        SideProgressBarScript.Instance.PrepareSideProgressBar(MaxClicks);
+        //SideProgressBarScript.Instance.PrepareSideProgressBar(MaxClicks);
 
         //prepare top pb
-        TopProgressBar.Instance.Prepare(10);
+        //TopProgressBar.Instance.Prepare(10);
     }
-
-
+    **/
+    /*
     public void PrepareScene()
     {
         Debug.Log(_listCounter);
 
 
-        /*
-        for (var i = 0; i < 10; i++)
-        {
-            PrepareClouds(mainList[i]); // Interation through al sublist, doesn't work :(
-        }
-        **/
+        
+        //for (var i = 0; i < 10; i++)
+        //{
+          //  PrepareClouds(mainList[i]); // Interation through al sublist, doesn't work :(
+        //}
+        
 
         //liste mit dem aktuellen counter übergeben
         //sas.PlayAudioClip();
@@ -215,19 +455,21 @@ public class Controller : MonoBehaviourSingleton<Controller>
             //SceneManager.LoadScene("End_Screen");
         //}
     }
+    **/
 
-    public void StartGame()
+    /*
+public void StartGame()
+{
+    Debug.Log("1 ##");
+    foreach (var btn in FindObjectsOfType<Button>())
     {
-        Debug.Log("1 ##");
-        foreach (var btn in FindObjectsOfType<Button>())
-        {
-            btn.interactable = true;
-        }
-
-        //placeholder
-        TopProgressBar.Instance.UpdateProgress();
+        btn.interactable = true;
     }
 
+    //placeholder
+    TopProgressBar.Instance.UpdateProgress();
+}
+**/
     public void PrepareClouds(WordListItem subList)
     {
         int i = 0;
@@ -248,15 +490,16 @@ public class Controller : MonoBehaviourSingleton<Controller>
         }
 
         //Tests if data from Input Scene have been saved
-         
+        
+        /*
         Debug.Log("Age: " + CharacterCreator._instance.Age);
         Debug.Log("Gender: " + CharacterCreator._instance.Gender);
         Debug.Log("Handedness: " + CharacterCreator._instance.Handedness);
         Debug.Log("Subject number: " + CharacterCreator._instance.SubjectNumber);
-        
-
+        **/
     }
 
+    /*
     public void CleanupScene()
     {
         Debug.Log("3 ##");
@@ -271,7 +514,8 @@ public class Controller : MonoBehaviourSingleton<Controller>
             Destroy(child.gameObject);
         }
     }
-
+    **/
+    /*
     public void ChangeScene()
     {
         var SceneNumber = 2;
@@ -280,6 +524,7 @@ public class Controller : MonoBehaviourSingleton<Controller>
             SceneManager.LoadScene("Scene_2");
         }
     }
+    **/
 
     public IEnumerator CloudWasClicked(Word word, GameObject cloudGo)
     {
@@ -306,16 +551,22 @@ public class Controller : MonoBehaviourSingleton<Controller>
         float animTime;
         //Bene: anzahl der clicks erhöhen und schaun ob das limit erreicht ist
         _clicks++;
+        Debug.Log("XXXXXXXXXXXXX clicks: " + _clicks);
 
         if (word.Distractor == false)
         {
-            Debug.Log("4 ##");
+            Debug.Log("CloudWasClicked() tw");
             //pb
+
+            //GameObject upd = SideProgressBarScript.Instance.UpdateSideProgressBar(true);
+
             var go = SideProgressBarScript.Instance.UpdateSideProgressBar(true);
             //Animation Cloud zu filler - move
             LeanTween.move(cloudGo, go.transform.position, 1f);
             //scale it, make it smaller
             LeanTween.scale(cloudGo, Vector3.zero, 1f);
+
+            
 
             //sas.PlayPositiveFeedbackSound();
             //sas.playAudioSequentially();
@@ -329,49 +580,73 @@ public class Controller : MonoBehaviourSingleton<Controller>
                 btn.interactable = false;
             }
 
-            Debug.Log("5 ##");
+            //Debug.Log("5 ##");
             yield return sas.PlayPositiveFeedback();
             //ScoreScript.ScoreValue += 10;
             setScore(Hit);
 
             //bene: wenn ja, dann szene cleanen und nächste preparen
-            Debug.Log("nächster Durchgang wird gestartet");
+            //Debug.Log("nächster Durchgang wird gestartet");
 
             //in der cleanup funktion wird der counter für die mainliste erhöht, damit das nächste element in der liste prepared werden kann
-            CleanupScene();
-            PrepareScene();
 
-            Debug.Log("2 ##");
+            //CleanupScene();
+            //PrepareScene();
+            //if (_clicks == 3) { SideProgressBarScript.Instance.ResetSideProgressBar(); }
+
+            
+
+            FinishSubTask();
+            PrepareSubTask();
+
+            //Debug.Log("2 ##");
 
            
         }
         else
         {
 
-            if (isLast)
-            {
+                Debug.Log("CloudWasClicked() dist");
                 animTime = sas.PlayNegativeFeedback();
                 Hit = false;
+
+                //GameObject upd = SideProgressBarScript.Instance.UpdateSideProgressBar(false);
+                var go = SideProgressBarScript.Instance.UpdateSideProgressBar(false);
+                //Animation Cloud zu filler - move
+                LeanTween.move(cloudGo, go.transform.position, 1f);
+                //scale it, make it smaller
+                LeanTween.scale(cloudGo, Vector3.zero, 1f);
+
+                
+
                 AnimationScript.Instance.t = true;
                 AnimationScript.Instance.UpdateAnimation();
-                SideProgressBarScript.Instance.UpdateSideProgressBar(false);
+
+                foreach (var btn in FindObjectsOfType<Button>())
+                {
+                    btn.interactable = false;
+                }
+
                 yield return new WaitForSeconds(animTime);
-                CleanupScene();
-                PrepareScene();
-            }
-            else {
-                animTime = sas.PlayNegativeFeedback();
-                Hit = false;
-                AnimationScript.Instance.t = true;
-                AnimationScript.Instance.UpdateAnimation();
-                SideProgressBarScript.Instance.UpdateSideProgressBar(false);
-                yield return new WaitForSeconds(animTime);
-            }
+                //CleanupScene();
+                //PrepareScene();
+                //if (_clicks == 3) { SideProgressBarScript.Instance.ResetSideProgressBar(); }
+
+                
+
+                FinishSubTask();
+                PrepareSubTask();
+
+
+          
         }
+        /*
         if (_listCounter == 10)
         {
             SceneManager.LoadScene("End_Screen");
         }
+        **/
+        
     }
 
     public int setScore(bool directHit) {

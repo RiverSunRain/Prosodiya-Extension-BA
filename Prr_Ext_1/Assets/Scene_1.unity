@@ -1192,7 +1192,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 994075197}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -459.00003, y: -478.69998, z: 0}
+  m_LocalPosition: {x: -463.7, y: -480.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 301719346}
@@ -1201,8 +1201,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -459, y: 121.3}
-  m_SizeDelta: {x: 439.8, y: 180.2}
+  m_AnchoredPosition: {x: -463.7, y: 119.4}
+  m_SizeDelta: {x: 430.4, y: 176.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &994075199
 MonoBehaviour:
@@ -1794,25 +1794,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxClicks: 3
+  Sc: {fileID: 0}
   CloudWrapper: {fileID: 441116470}
   CloudPrefabs: {fileID: 1805558596156110, guid: 0af0c264f68f2c44aaa5d7248efa6aac,
     type: 2}
   MainWordList:
-  - {fileID: 11400000, guid: 9b451e8a3fc89a041b1f678e6aeb8d46, type: 2}
-  - {fileID: 11400000, guid: 5b8d068bce5d29149be9844839b2e9a5, type: 2}
-  - {fileID: 11400000, guid: a7ed37eec2ec98149bb27bc048e43be8, type: 2}
-  - {fileID: 11400000, guid: 7fd3577d984f145408d6de28a7ca7bf2, type: 2}
-  - {fileID: 11400000, guid: 881a31d98dc7b0940ae05958c1b115c2, type: 2}
-  - {fileID: 11400000, guid: 778217659bb7814419b09503396ca5b4, type: 2}
-  - {fileID: 11400000, guid: 83c4e7c6a25dd1f4d9fce028a499545b, type: 2}
-  - {fileID: 11400000, guid: 5074ce38c6cdb73419cb9f7867d22cb6, type: 2}
-  - {fileID: 11400000, guid: f4e448e4487bfbb48ad0733f6f75fcaa, type: 2}
-  - {fileID: 11400000, guid: 25f12ca55e387a8438cff5277878102f, type: 2}
+  - {fileID: 11400000, guid: 8a2c8521c86d74644bf63a37615bdef7, type: 2}
+  - {fileID: 11400000, guid: e631d9ceb38c21747b2d93645cbbf719, type: 2}
+  - {fileID: 11400000, guid: 14954c79ed48bbb4299e486c298f5666, type: 2}
+  - {fileID: 11400000, guid: 2cb9e8598a5ef9a4a9b819798fccb6aa, type: 2}
+  - {fileID: 11400000, guid: f745edc2c39efc647a5715bef216e28e, type: 2}
+  - {fileID: 11400000, guid: a1e1fb3e18b645c4cb5e603968cfe643, type: 2}
+  - {fileID: 11400000, guid: d36e3899e5300ed4390b68d2b049a9c3, type: 2}
+  - {fileID: 11400000, guid: 9e2cf610e0583654fa22e269ceb0558a, type: 2}
+  - {fileID: 11400000, guid: c1ae9294aca07334d8cf613858ff7439, type: 2}
+  - {fileID: 11400000, guid: f1abe816152ba1c408f663cf07645c73, type: 2}
   CurrentWordListItem: {fileID: 0}
   AllowedPositions:
-  - {x: 0, y: -100}
+  - {x: 200, y: -100}
   - {x: 200, y: 100}
   - {x: -200, y: 100}
+  - {x: -200, y: -100}
   sas: {fileID: 422016465}
 --- !u!4 &1311582157
 Transform:
