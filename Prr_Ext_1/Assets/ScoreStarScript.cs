@@ -17,7 +17,7 @@ public class ScoreStarScript : MonoBehaviourSingleton<ScoreStarScript>
     {
        while (b == true)
        {
-            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSeconds(0.125f);
             image.enabled = !image.enabled;
        }
 

@@ -556,7 +556,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MusicClip: {fileID: 8300000, guid: d2a20108eb5a8e34a82135b9bd144e1c, type: 3}
   MusicSource: {fileID: 422016466}
-  NegativeFeedbackSoundClip: {fileID: 8300000, guid: 8e752832e778afc44aa0d1b10b7a002b,
+  NegativeFeedbackSoundClip: {fileID: 8300000, guid: 14846f609e77de94b8b70fe74538eb70,
     type: 3}
   PositiveFeedbackSoundClip: {fileID: 8300000, guid: 023940ce0ed6b5549bf16a29d45ed95f,
     type: 3}

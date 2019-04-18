@@ -613,8 +613,8 @@ public void StartGame()
         {
 
                 Debug.Log("CloudWasClicked() dist");
-                animTime = sas.PlayNegativeFeedback();
-            //yield return sas.PlayNegativeFeedback(); // 18.04.19 Für negative sound version: einkommentieren
+                //animTime = sas.PlayNegativeFeedback();
+                
 
             Hit = false;
 
@@ -635,9 +635,9 @@ public void StartGame()
                     btn.interactable = false;
                 }
 
-                yield return new WaitForSeconds(animTime); // 18.04.19 Für negative sound version: auskommentieren
+                //yield return new WaitForSeconds(animTime); // 18.04.19 Für negative sound version: auskommentieren
 
-
+                yield return sas.PlayNegativeFeedback(); // 18.04.19 Für negative sound version: einkommentieren
 
 
             //CleanupScene();
