@@ -11,6 +11,7 @@ public class Controller : MonoBehaviourSingleton<Controller>
 {
     public int MaxClicks = 3;
     private int _clicks = 0;
+    
 
     private bool Hit = true;
     private bool isLast = false;
@@ -199,6 +200,9 @@ public class Controller : MonoBehaviourSingleton<Controller>
     {
         Debug.Log("PrepareSubTask() ##");
 
+        ScoreStarScript.Instance.b = false;
+        ScoreStarScript.Instance.Flashing();
+             
         foreach (var btn in FindObjectsOfType<Button>())
         {
             btn.interactable = true;
@@ -566,10 +570,12 @@ public void StartGame()
             //scale it, make it smaller
             LeanTween.scale(cloudGo, Vector3.zero, 1f);
 
-            
+
 
             //sas.PlayPositiveFeedbackSound();
             //sas.playAudioSequentially();
+            ScoreStarScript.Instance.b = true;
+            ScoreStarScript.Instance.StartFlashing();
 
             AnimationScript.Instance.s = true;
             //wait for animation to finish
@@ -584,7 +590,7 @@ public void StartGame()
             yield return sas.PlayPositiveFeedback();
             //ScoreScript.ScoreValue += 10;
             setScore(Hit);
-
+            
             //bene: wenn ja, dann szene cleanen und nächste preparen
             //Debug.Log("nächster Durchgang wird gestartet");
 
@@ -608,7 +614,9 @@ public void StartGame()
 
                 Debug.Log("CloudWasClicked() dist");
                 animTime = sas.PlayNegativeFeedback();
-                Hit = false;
+            //yield return sas.PlayNegativeFeedback(); // 18.04.19 Für negative sound version: einkommentieren
+
+            Hit = false;
 
                 //GameObject upd = SideProgressBarScript.Instance.UpdateSideProgressBar(false);
                 var go = SideProgressBarScript.Instance.UpdateSideProgressBar(false);
@@ -627,14 +635,18 @@ public void StartGame()
                     btn.interactable = false;
                 }
 
-                yield return new WaitForSeconds(animTime);
-                //CleanupScene();
-                //PrepareScene();
-                //if (_clicks == 3) { SideProgressBarScript.Instance.ResetSideProgressBar(); }
+                yield return new WaitForSeconds(animTime); // 18.04.19 Für negative sound version: auskommentieren
 
-                
 
-                FinishSubTask();
+
+
+            //CleanupScene();
+            //PrepareScene();
+            //if (_clicks == 3) { SideProgressBarScript.Instance.ResetSideProgressBar(); }
+
+
+
+            FinishSubTask();
                 PrepareSubTask();
 
 

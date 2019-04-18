@@ -8,8 +8,11 @@ public class start_audio_script : MonoBehaviour
 
     public AudioSource MusicSource;
 
+    //public AudioClip NegativeFeedbackSoundClip; // 18.04.19 Für negative sound version: einkommentieren
     public AudioClip PositiveFeedbackSoundClip;
     //public AudioSource PositiveFeedbackSoundSource;
+
+   
 
     public List<AudioClip> PositiveFeedbackListClip;
     public AudioSource PositiveFeedbackSource;
@@ -44,12 +47,33 @@ public class start_audio_script : MonoBehaviour
         //PositiveFeedbackSource.Play();
     }
 
+
+
+
+    /* 18.04.19 Für negative sound version: einkommentieren
+     * 
+     * 
+    public IEnumerator PlayNegativeFeedback()
+    {
+        var a1 = NegativeFeedbackSoundClip;
+        var a2 = NegativeFeedbackListClip[Random.Range(0, 8)];
+        StartCoroutine(playAudioSequentially(a1, a2));
+        yield return StartCoroutine(playAudioSequentially(a1, a2));
+        //PositiveFeedbackSource.clip = PositiveFeedbackListClip[Random.Range(0, 8)];
+        //PositiveFeedbackSource.Play();
+    }
+    **/
+
+
+
+    // 18.04.19 Für negative sound version: PlayNegativeFeedback() auskommentieren
     public float PlayNegativeFeedback()
     {
         NegativeFeedbackSource.clip = NegativeFeedbackListClip[Random.Range(0, 8)];
         NegativeFeedbackSource.Play();
         return NegativeFeedbackSource.clip.length;
     }
+   
 
     public void PlayHelpAudio()
     {
@@ -62,7 +86,6 @@ public class start_audio_script : MonoBehaviour
         HelpAudioSource.clip = HelpAudioClip;
         HelpAudioSource.Stop();
     }
-
 
     //public AudioSource adSource;
     //public AudioClip[] HelpArray;
