@@ -182,6 +182,9 @@ public class Controller : MonoBehaviourSingleton<Controller>
         Hit = true;
         //prepare top pb
         TopProgressBar.Instance.Prepare(10);
+        //prepare clouds
+        CurrentWordListItem = MainWordList[_listCounter];
+        PrepareClouds(CurrentWordListItem);
         StartTask();
     }
 
@@ -203,9 +206,6 @@ public class Controller : MonoBehaviourSingleton<Controller>
 
         //prepare side pb
 
-        //prepare clouds
-        CurrentWordListItem = MainWordList[_listCounter];
-        PrepareClouds(CurrentWordListItem);
         
         StartSubtask();
     }
@@ -254,7 +254,7 @@ public class Controller : MonoBehaviourSingleton<Controller>
         //###abbruchbedinung subtasks
         //abfrage ob letzte subtask (click abfrage)
         //wenn ja, cleanup Task
-        if (_clicks >= 2)
+        if (_clicks >= _maxAllowedClicks)
         {
             //SideProgressBarScript.Instance.ResetSideProgressBar();
             FinishTask();

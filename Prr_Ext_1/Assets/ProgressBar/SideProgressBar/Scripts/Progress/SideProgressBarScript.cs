@@ -15,6 +15,7 @@ public class SideProgressBarScript : MonoBehaviourSingleton<SideProgressBarScrip
 
     private int _totalSubTaskCount = 1;
     private int _subTaskCompleted = 0;
+    private List<GameObject> _separatorList = new List<GameObject>();
 
     private List<GameObject> _fillerList
     {
@@ -56,7 +57,7 @@ public class SideProgressBarScript : MonoBehaviourSingleton<SideProgressBarScrip
             //add separators, skip last separator
             if (i + 1 != _totalSubTaskCount)
             {
-                Instantiate(SeparatorPrefab, SeparatorWrapper.transform);
+                _separatorList.Add(Instantiate(SeparatorPrefab, SeparatorWrapper.transform));
             }
         }
     }
@@ -103,6 +104,13 @@ public class SideProgressBarScript : MonoBehaviourSingleton<SideProgressBarScrip
             Destroy(filler);
         }
         _fillerList.Clear();
+
+        //delete separators
+        foreach (var child in _separatorList)
+        {
+            GameObject.Destroy(child);
+        }
+        _separatorList.Clear();
     }
 
     #endregion
