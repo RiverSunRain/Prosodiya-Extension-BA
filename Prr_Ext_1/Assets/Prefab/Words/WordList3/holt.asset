@@ -13,4 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WordString: holt
   Distractor: 1
-  Difficutly: 0
+  Difficutly: 1

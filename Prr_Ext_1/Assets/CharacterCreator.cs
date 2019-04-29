@@ -12,11 +12,13 @@ public class CharacterCreator : MonoBehaviourSingleton<CharacterCreator>
     public InputField GenderInput;
     public InputField HandednessInput;
     public InputField SubjectNumberInput;
+    public InputField NumberOfCloudsInput;
 
     public string Age { get; set; }
     public string Gender { get; set; }
     public string Handedness { get; set; }
     public string SubjectNumber { get; set; }
+    public string NumberOfClouds;
 
     public void OnSubmit() {
 
@@ -24,6 +26,7 @@ public class CharacterCreator : MonoBehaviourSingleton<CharacterCreator>
         Gender = GenderInput.text;
         Handedness = HandednessInput.text;
         SubjectNumber = SubjectNumberInput.text;
+        NumberOfClouds = NumberOfCloudsInput.text;
         
         DontDestroyOnLoad(this.gameObject);
 

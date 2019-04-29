@@ -92,30 +92,30 @@ namespace Prosodiya
 
         private void AddSeperators(int numberOfExercises, int numberOfFinishedTasks = -1)
         {
-            _sepWidth = SkewedSeperator.GetComponent<RectTransform>().sizeDelta.x;
+                _sepWidth = SkewedSeperator.GetComponent<RectTransform>().sizeDelta.x;
 
-            var totalSize = ProgressBarFrame.GetComponent<RectTransform>().sizeDelta;
-            // Calculate the spacing for the separators.
-            _sepSpacing = (totalSize.x) / (float)(numberOfExercises) - _sepWidth;
-            ProgressBarFrame.GetComponent<HorizontalLayoutGroup>().spacing = _sepSpacing;
-            
-            // Insert separators. +1 is added to put one seperator in the end
-            for (int i = 0; i < numberOfExercises; i++)
-            {
-                var go = Instantiate(SkewedSeperator);
-                go.transform.SetParent(ProgressBarFrame.transform, false);
-                //merken, wann separator gehittet wird und ihn als prevxpos merken
-                if (numberOfFinishedTasks == i)
-                {
-                    _previousXpos = (_sepWidth + _sepSpacing) * i;
-                }
+                var totalSize = ProgressBarFrame.GetComponent<RectTransform>().sizeDelta;
+                // Calculate the spacing for the separators.
+                _sepSpacing = (totalSize.x) / (float)(numberOfExercises) - _sepWidth;
+                ProgressBarFrame.GetComponent<HorizontalLayoutGroup>().spacing = _sepSpacing;
 
-                // Make the first and last separator invisible. It's just there for shifting all other separators accordingly and making the innerFill fit till the end.
-                if (i == 0 || i == numberOfExercises)
+                // Insert separators. +1 is added to put one seperator in the end
+                for (int i = 0; i < numberOfExercises; i++)
                 {
-                    go.GetComponent<CanvasRenderer>().SetAlpha(0);
-                }
-            }
+                    var go = Instantiate(SkewedSeperator);
+                    go.transform.SetParent(ProgressBarFrame.transform, false);
+                    //merken, wann separator gehittet wird und ihn als prevxpos merken
+                    if (numberOfFinishedTasks == i)
+                    {
+                        _previousXpos = (_sepWidth + _sepSpacing) * i;
+                    }
+
+                    // Make the first and last separator invisible. It's just there for shifting all other separators accordingly and making the innerFill fit till the end.
+                    if (i == 0 || i == numberOfExercises)
+                    {
+                        go.GetComponent<CanvasRenderer>().SetAlpha(0);
+                    }
+                }         
         }
 
         private void FillProgBar(float targetPos, float time = 1f)

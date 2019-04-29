@@ -24,7 +24,19 @@ public class Controller : MonoBehaviourSingleton<Controller>
 
     //bene: wordlist items werden im inspector referenziert
     //neues Item erstellt, das du in deinen Assets einfach hinzufügen kannst, habe 2 bsp Wortlisten erstellt, siehe Inspector beim Controller
+
+
+    // Wordlists
+
     public List<WordListItem> MainWordList = new List<WordListItem>();
+
+    public List<WordListItem> MainWordListSix = new List<WordListItem>();
+
+    public List<WordListItem> MainWordListEight = new List<WordListItem>();
+
+    public List<WordListItem> MainWordListTen = new List<WordListItem>();
+
+
 
     public WordListItem CurrentWordListItem;
 
@@ -34,7 +46,7 @@ public class Controller : MonoBehaviourSingleton<Controller>
     }
 
     //bene: counter für den index zur aktuellen wordliste
-    private int _listCounter = 0;
+    public int _listCounter = 0;
 
     /*
     public List<WordListItem> WordList;
@@ -184,7 +196,30 @@ public class Controller : MonoBehaviourSingleton<Controller>
         //prepare top pb
         TopProgressBar.Instance.Prepare(10);
         //prepare clouds
-        CurrentWordListItem = MainWordList[_listCounter];
+        //CurrentWordListItem = MainWordListTen[_listCounter];
+
+        if (CharacterCreator.Instance.NumberOfClouds == "4")
+        {
+            CurrentWordListItem = MainWordList[_listCounter];
+        }
+        else if (CharacterCreator.Instance.NumberOfClouds == "6")
+        {
+            CurrentWordListItem = MainWordListSix[_listCounter];
+        }
+        else if (CharacterCreator.Instance.NumberOfClouds == "8")
+        {
+            CurrentWordListItem = MainWordListEight[_listCounter];
+        }
+        else if (CharacterCreator.Instance.NumberOfClouds == "10")
+        {
+            CurrentWordListItem = MainWordListTen[_listCounter];
+        }
+        else {
+            //Default, 4 Clouds
+            CurrentWordListItem = MainWordList[_listCounter];
+        }
+
+        //CurrentWordListItem = selectList(CharacterCreator.Instance.NumberOfClouds)[_listCounter];
         PrepareClouds(CurrentWordListItem);
         StartTask();
     }
@@ -192,7 +227,7 @@ public class Controller : MonoBehaviourSingleton<Controller>
     public void StartTask()
     {
         Debug.Log("StartTask() ##");
-        SideProgressBarScript.Instance.PrepareSideProgressBar(2);
+        SideProgressBarScript.Instance.PrepareSideProgressBar(_maxAllowedClicks);
         PrepareSubTask();
     }
 
