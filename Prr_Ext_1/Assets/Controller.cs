@@ -153,19 +153,19 @@ public class Controller : MonoBehaviourSingleton<Controller>
 
         
 
-        if (dropDownScript.dropDown.value == 1)
+        if (CharacterCreator.Instance.NumberOfClouds == "4")
         {
             CurrentWordListItem = MainWordList[_listCounter];
         }
-        else if (dropDownScript.dropDown.value == 2)
+        else if (CharacterCreator.Instance.NumberOfClouds == "6")
         {
             CurrentWordListItem = MainWordListSix[_listCounter];
         }
-        else if (dropDownScript.dropDown.value == 3)
+        else if (CharacterCreator.Instance.NumberOfClouds == "8")
         {
             CurrentWordListItem = MainWordListEight[_listCounter];
         }
-        else if (dropDownScript.dropDown.value == 4)
+        else if (CharacterCreator.Instance.NumberOfClouds == "10")
         {
             CurrentWordListItem = MainWordListTen[_listCounter];
         }
