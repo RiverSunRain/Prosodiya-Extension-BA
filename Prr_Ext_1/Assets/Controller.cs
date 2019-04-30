@@ -38,6 +38,8 @@ public class Controller : MonoBehaviourSingleton<Controller>
 
 
 
+
+
     public WordListItem CurrentWordListItem;
 
     private int _maxAllowedClicks
@@ -106,58 +108,7 @@ public class Controller : MonoBehaviourSingleton<Controller>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public static DropDownScript dropDownScript;
 
 
 
@@ -166,6 +117,7 @@ public class Controller : MonoBehaviourSingleton<Controller>
     void Start()
     {
         Debug.Log("Start() ##");
+
         PrepareScene();   
     }
 
@@ -186,6 +138,7 @@ public class Controller : MonoBehaviourSingleton<Controller>
         }
         //placeholder
         //TopProgressBar.Instance.UpdateProgress();
+
         PrepareTask();
     }
 
@@ -198,19 +151,21 @@ public class Controller : MonoBehaviourSingleton<Controller>
         //prepare clouds
         //CurrentWordListItem = MainWordListTen[_listCounter];
 
-        if (CharacterCreator.Instance.NumberOfClouds == "4")
+        
+
+        if (dropDownScript.dropDown.value == 1)
         {
             CurrentWordListItem = MainWordList[_listCounter];
         }
-        else if (CharacterCreator.Instance.NumberOfClouds == "6")
+        else if (dropDownScript.dropDown.value == 2)
         {
             CurrentWordListItem = MainWordListSix[_listCounter];
         }
-        else if (CharacterCreator.Instance.NumberOfClouds == "8")
+        else if (dropDownScript.dropDown.value == 3)
         {
             CurrentWordListItem = MainWordListEight[_listCounter];
         }
-        else if (CharacterCreator.Instance.NumberOfClouds == "10")
+        else if (dropDownScript.dropDown.value == 4)
         {
             CurrentWordListItem = MainWordListTen[_listCounter];
         }
