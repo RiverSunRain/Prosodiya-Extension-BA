@@ -384,7 +384,10 @@ public class Controller : MonoBehaviourSingleton<Controller>
     {
         Debug.Log("CleanupScene() ##");
         //    Szenenwechsel
-        SceneManager.LoadScene("End_Screen");
+        if (CharacterCreator.Instance.Gamification == "On") {
+            SceneManager.LoadScene("End_Screen");
+        }
+        
     }
 
 
