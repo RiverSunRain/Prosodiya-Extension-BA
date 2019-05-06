@@ -11,10 +11,12 @@ public class Controller : MonoBehaviourSingleton<Controller>
 {
     public int MaxClicks = 3;
     private int _clicks = 0;
-    
 
     private bool Hit = true;
     private bool isLast = false;
+
+    public Text roundnumberText;
+    int i = 1;
 
     public GameObject Sc;
 
@@ -25,20 +27,17 @@ public class Controller : MonoBehaviourSingleton<Controller>
     //bene: wordlist items werden im inspector referenziert
     //neues Item erstellt, das du in deinen Assets einfach hinzufügen kannst, habe 2 bsp Wortlisten erstellt, siehe Inspector beim Controller
 
-
     // Wordlists
 
     public List<WordListItem> MainWordList = new List<WordListItem>();
+
+    public List<WordListItem> MainWordList4off = new List<WordListItem>();
 
     public List<WordListItem> MainWordListSix = new List<WordListItem>();
 
     public List<WordListItem> MainWordListEight = new List<WordListItem>();
 
     public List<WordListItem> MainWordListTen = new List<WordListItem>();
-
-
-
-
 
     public WordListItem CurrentWordListItem;
 
@@ -108,7 +107,7 @@ public class Controller : MonoBehaviourSingleton<Controller>
 
 
 
-    public static DropDownScript dropDownScript;
+    //public static DropDownScript dropDownScript;
 
 
 
@@ -117,7 +116,14 @@ public class Controller : MonoBehaviourSingleton<Controller>
     void Start()
     {
         Debug.Log("Start() ##");
-
+        GamificationScript.Instance.deactivateGamification(CharacterCreator.Instance.Gamification);
+        GamificationScript1.Instance.deactivateGamification(CharacterCreator.Instance.Gamification);
+        GamificationScript2.Instance.deactivateGamification(CharacterCreator.Instance.Gamification);
+        GamificationScript3.Instance.deactivateGamification(CharacterCreator.Instance.Gamification);
+        GamificationScript4.Instance.destroySideprogressbar(CharacterCreator.Instance.Gamification);
+        GamificationScript5.Instance.destroySideprogressbar(CharacterCreator.Instance.Gamification);
+        RoundnumberScript.Instance.destroyRoundnumber(CharacterCreator.Instance.Gamification);
+        RoundScript.Instance.destroyRound(CharacterCreator.Instance.Gamification);
         PrepareScene();   
     }
 
@@ -147,32 +153,107 @@ public class Controller : MonoBehaviourSingleton<Controller>
         Debug.Log("PrepareTask() ##");
         Hit = true;
         //prepare top pb
-        TopProgressBar.Instance.Prepare(10);
+        if (CharacterCreator.Instance.Gamification == "On") {
+            TopProgressBar.Instance.Prepare(10);
+        }
+
+        /*
+        if (CharacterCreator.Instance.Gamification == "Off")
+        {
+            i++;
+            roundnumberText.text = i.ToString();
+        }
+       **/
+        if (CharacterCreator.Instance.Gamification == "Off")
+        {
+            i = RoundnumberScript.Instance.updateRound(i);
+        }
+
+
+
+
         //prepare clouds
         //CurrentWordListItem = MainWordListTen[_listCounter];
 
+        if (CharacterCreator.Instance.Gamification == "On")
+        {
+
+
+            if (CharacterCreator.Instance.NumberOfClouds == "4")
+            {
+                CurrentWordListItem = MainWordList[_listCounter];
+            }
+            else if (CharacterCreator.Instance.NumberOfClouds == "6")
+            {
+                CurrentWordListItem = MainWordListSix[_listCounter];
+            }
+            else if (CharacterCreator.Instance.NumberOfClouds == "8")
+            {
+                CurrentWordListItem = MainWordListEight[_listCounter];
+            }
+            else if (CharacterCreator.Instance.NumberOfClouds == "10")
+            {
+                CurrentWordListItem = MainWordListTen[_listCounter];
+            }
+            else
+            {
+                //Default, 4 Clouds
+                CurrentWordListItem = MainWordList[_listCounter];
+            }
+
+
+
+
+
+        }
+        else if (CharacterCreator.Instance.Gamification == "Off") {
+
+            if (CharacterCreator.Instance.NumberOfClouds == "4")
+            {
+                CurrentWordListItem = MainWordList4off[_listCounter];
+            }
+            else if (CharacterCreator.Instance.NumberOfClouds == "6")
+            {
+                CurrentWordListItem = MainWordListSix[_listCounter];
+            }
+            else if (CharacterCreator.Instance.NumberOfClouds == "8")
+            {
+                CurrentWordListItem = MainWordListEight[_listCounter];
+            }
+            else if (CharacterCreator.Instance.NumberOfClouds == "10")
+            {
+                CurrentWordListItem = MainWordListTen[_listCounter];
+            }
+            else
+            {
+                //Default, 4 Clouds
+                CurrentWordListItem = MainWordList4off[_listCounter];
+            }
+
+        }
+
         
 
-        if (CharacterCreator.Instance.NumberOfClouds == "4")
-        {
-            CurrentWordListItem = MainWordList[_listCounter];
-        }
-        else if (CharacterCreator.Instance.NumberOfClouds == "6")
-        {
-            CurrentWordListItem = MainWordListSix[_listCounter];
-        }
-        else if (CharacterCreator.Instance.NumberOfClouds == "8")
-        {
-            CurrentWordListItem = MainWordListEight[_listCounter];
-        }
-        else if (CharacterCreator.Instance.NumberOfClouds == "10")
-        {
-            CurrentWordListItem = MainWordListTen[_listCounter];
-        }
-        else {
-            //Default, 4 Clouds
-            CurrentWordListItem = MainWordList[_listCounter];
-        }
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
 
         //CurrentWordListItem = selectList(CharacterCreator.Instance.NumberOfClouds)[_listCounter];
         PrepareClouds(CurrentWordListItem);
@@ -182,7 +263,9 @@ public class Controller : MonoBehaviourSingleton<Controller>
     public void StartTask()
     {
         Debug.Log("StartTask() ##");
-        SideProgressBarScript.Instance.PrepareSideProgressBar(_maxAllowedClicks);
+        if (CharacterCreator.Instance.Gamification == "On") {
+            SideProgressBarScript.Instance.PrepareSideProgressBar(_maxAllowedClicks);
+        }
         PrepareSubTask();
     }
 
@@ -190,8 +273,10 @@ public class Controller : MonoBehaviourSingleton<Controller>
     {
         Debug.Log("PrepareSubTask() ##");
 
-        ScoreStarScript.Instance.b = false;
-        ScoreStarScript.Instance.Flashing();
+        if(CharacterCreator.Instance.Gamification == "On") {
+            ScoreStarScript.Instance.b = false;
+            ScoreStarScript.Instance.Flashing();
+        }
              
         foreach (var btn in FindObjectsOfType<Button>())
         {
@@ -263,11 +348,11 @@ public class Controller : MonoBehaviourSingleton<Controller>
     public void CleanupTask()
     {
         Debug.Log("CleanUpTask() ##");
-        SideProgressBarScript.Instance.ResetSideProgressBar();
 
-
-
-
+        if (CharacterCreator.Instance.Gamification == "On") {
+            SideProgressBarScript.Instance.ResetSideProgressBar();
+        }
+        
         //bene: counter erhöhen für den nächsten durchgang
         _listCounter++;
         //bene: click counter zurücksetzen
@@ -554,19 +639,25 @@ public void StartGame()
 
             //GameObject upd = SideProgressBarScript.Instance.UpdateSideProgressBar(true);
 
-            var go = SideProgressBarScript.Instance.UpdateSideProgressBar(true);
-            //Animation Cloud zu filler - move
-            LeanTween.move(cloudGo, go.transform.position, 1f);
-            //scale it, make it smaller
-            LeanTween.scale(cloudGo, Vector3.zero, 1f);
+            if (CharacterCreator.Instance.Gamification == "On") {
+                var go = SideProgressBarScript.Instance.UpdateSideProgressBar(true);
+                //Animation Cloud zu filler - move
+                LeanTween.move(cloudGo, go.transform.position, 1f);
+                //scale it, make it smaller
+                LeanTween.scale(cloudGo, Vector3.zero, 1f);
+            }
+            
 
 
 
             //sas.PlayPositiveFeedbackSound();
             //sas.playAudioSequentially();
-            ScoreStarScript.Instance.b = true;
-            ScoreStarScript.Instance.StartFlashing();
 
+            if (CharacterCreator.Instance.Gamification == "On") {
+                ScoreStarScript.Instance.b = true;
+                ScoreStarScript.Instance.StartFlashing();
+            }
+           
             AnimationScript.Instance.s = true;
             //wait for animation to finish
             AnimationScript.Instance.UpdateAnimation();
@@ -608,12 +699,16 @@ public void StartGame()
 
             Hit = false;
 
-                //GameObject upd = SideProgressBarScript.Instance.UpdateSideProgressBar(false);
+            //GameObject upd = SideProgressBarScript.Instance.UpdateSideProgressBar(false);
+
+            if (CharacterCreator.Instance.Gamification == "On") {
                 var go = SideProgressBarScript.Instance.UpdateSideProgressBar(false);
                 //Animation Cloud zu filler - move
                 LeanTween.move(cloudGo, go.transform.position, 1f);
                 //scale it, make it smaller
                 LeanTween.scale(cloudGo, Vector3.zero, 1f);
+            }
+                
 
                 
 
@@ -637,7 +732,7 @@ public void StartGame()
 
 
             FinishSubTask();
-                PrepareSubTask();
+            PrepareSubTask();
 
 
           
@@ -660,4 +755,7 @@ public void StartGame()
             return ScoreScript.ScoreValue += 10;
         }
     }
+
+
+
 }

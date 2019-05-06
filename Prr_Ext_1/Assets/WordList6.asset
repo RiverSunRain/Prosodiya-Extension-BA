@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: WordList6
   m_EditorClassIdentifier: 
   WordList:
-  - {fileID: 11400000, guid: a2c37a99ba6cf694f9892167b698a1ad, type: 2}
-  - {fileID: 11400000, guid: d9d847542628a234098152a2b8e65f62, type: 2}
   - {fileID: 11400000, guid: 5723088be7c69df47a6708dade491d49, type: 2}
+  - {fileID: 11400000, guid: a2c37a99ba6cf694f9892167b698a1ad, type: 2}
   - {fileID: 11400000, guid: e24ce49ab27dfce4184fd08e60be85ed, type: 2}
+  - {fileID: 11400000, guid: d9d847542628a234098152a2b8e65f62, type: 2}

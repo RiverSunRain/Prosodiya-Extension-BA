@@ -9,8 +9,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26453e0c7353f5d4993db4896f453e1e, type: 3}
-  m_Name: "schl\xE4fst"
+  m_Name: baut
   m_EditorClassIdentifier: 
-  WordString: "schl\xE4fst"
+  WordString: baut
   Distractor: 1
-  Difficutly: 1
+  Difficutly: 2

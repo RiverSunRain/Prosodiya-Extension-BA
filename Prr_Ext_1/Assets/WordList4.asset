@@ -13,6 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WordList:
   - {fileID: 11400000, guid: f35d071e75e832f4e93bea8363f53210, type: 2}
-  - {fileID: 11400000, guid: e06a0367d55126245be891acd4633220, type: 2}
   - {fileID: 11400000, guid: ae3d985fcdc3d6745acf35178526b1d6, type: 2}
-  - {fileID: 11400000, guid: 58f08c58b4052b04f96e53b27b578f67, type: 2}
+  - {fileID: 11400000, guid: 5f14b70950526d243853157ac85fb842, type: 2}
+  - {fileID: 11400000, guid: c60ebe8c3bfac944abb59cc036019c21, type: 2}

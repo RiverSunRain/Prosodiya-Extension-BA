@@ -9,10 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a7f43beaa9cf364998b37c06f99ed85, type: 3}
-  m_Name: WordList9
+  m_Name: WL4off7
   m_EditorClassIdentifier: 
   WordList:
-  - {fileID: 11400000, guid: 235b253c342f6754b92c8017dbb71889, type: 2}
-  - {fileID: 11400000, guid: 68365ee05ce43ee43a5ccd6a64f2f8bd, type: 2}
-  - {fileID: 11400000, guid: af70247a8a09f4a459cb78b9fe3b5a8a, type: 2}
-  - {fileID: 11400000, guid: 32f8fdbe029b5c04586b566afa1ebbfb, type: 2}
+  - {fileID: 11400000, guid: 59434d1b202ddc543b5fb5dab9b54063, type: 2}
+  - {fileID: 11400000, guid: 37872fb1428487a438340d5244f69d40, type: 2}
+  - {fileID: 11400000, guid: bfaf4e2c45381dd40a494f5917acf28e, type: 2}
+  - {fileID: 11400000, guid: d24afe1bed4e06f4ca3b8e86b7c2ca05, type: 2}
