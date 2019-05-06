@@ -38,8 +38,8 @@ public abstract class MonoBehaviourSingleton<T> : MonoBehaviour where T : MonoBe
 		{
 			Debug.Log(this.GetType() + " Singleton._instance already set, destroy this.");
 			Object.Destroy(this.gameObject);
-			// _instance = (T)System.Convert.ChangeType(this, typeof(T));
-		}
+            // _instance = (T)System.Convert.ChangeType(this, typeof(T));
+        }
 	}
 
 	protected static T InstantiateSingleton()

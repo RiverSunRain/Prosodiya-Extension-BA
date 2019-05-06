@@ -124,6 +124,8 @@ public class Controller : MonoBehaviourSingleton<Controller>
         GamificationScript5.Instance.destroySideprogressbar(CharacterCreator.Instance.Gamification);
         RoundnumberScript.Instance.destroyRoundnumber(CharacterCreator.Instance.Gamification);
         RoundScript.Instance.destroyRound(CharacterCreator.Instance.Gamification);
+        
+        
         PrepareScene();   
     }
 
@@ -386,8 +388,10 @@ public class Controller : MonoBehaviourSingleton<Controller>
         //    Szenenwechsel
         if (CharacterCreator.Instance.Gamification == "On") {
             SceneManager.LoadScene("End_Screen");
+        } else if (CharacterCreator.Instance.Gamification == "Off") {
+            SceneManager.LoadScene("End_Screen_1");
         }
-        
+            
     }
 
 
