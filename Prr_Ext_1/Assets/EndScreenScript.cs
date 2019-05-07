@@ -7,7 +7,8 @@ public class EndScreenScript : MonoBehaviour
 {
     private void Start()
     {             
-        Debug.Log("Final Score: " + Controller.Instance.Sc);
+        if(Controller.Initialized) Destroy(FindObjectOfType<Controller>().gameObject);
+        if(CharacterCreator.Initialized) Destroy(FindObjectOfType<CharacterCreator>().gameObject);
     }
 
 
