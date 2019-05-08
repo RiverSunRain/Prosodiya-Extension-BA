@@ -105,12 +105,6 @@ public class Controller : MonoBehaviourSingleton<Controller>
 
 
 
-
-
-    //public static DropDownScript dropDownScript;
-
-
-
     //FINAL GAME STRUCTURE
 
     void Start()
@@ -124,8 +118,8 @@ public class Controller : MonoBehaviourSingleton<Controller>
         GamificationScript5.Instance.destroySideprogressbar(CharacterCreator.Instance.Gamification);
         RoundnumberScript.Instance.destroyRoundnumber(CharacterCreator.Instance.Gamification);
         RoundScript.Instance.destroyRound(CharacterCreator.Instance.Gamification);
-        
-        
+        ScoreScript.Instance.Setback();
+
         PrepareScene();   
     }
 
@@ -652,6 +646,9 @@ public void StartGame()
                 LeanTween.move(cloudGo, go.transform.position, 1f);
                 //scale it, make it smaller
                 LeanTween.scale(cloudGo, Vector3.zero, 1f);
+            } else if (CharacterCreator.Instance.Gamification == "Off") {
+                LeanTween.move(cloudGo, cloudGo.transform.position, 1f);
+                LeanTween.scale(cloudGo, Vector3.zero, 0.000000000000001f);
             }
             
 
@@ -714,6 +711,9 @@ public void StartGame()
                 LeanTween.move(cloudGo, go.transform.position, 1f);
                 //scale it, make it smaller
                 LeanTween.scale(cloudGo, Vector3.zero, 1f);
+            } else if (CharacterCreator.Instance.Gamification == "Off") {
+                LeanTween.move(cloudGo, cloudGo.transform.position, 1f);
+                LeanTween.scale(cloudGo, Vector3.zero, 0.000000000000001f);
             }
                 
 
