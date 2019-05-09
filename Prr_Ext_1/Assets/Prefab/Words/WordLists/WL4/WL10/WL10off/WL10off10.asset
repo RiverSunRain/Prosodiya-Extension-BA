@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a7f43beaa9cf364998b37c06f99ed85, type: 3}
+  m_Name: WL10off10
+  m_EditorClassIdentifier: 
+  WordList:
+  - {fileID: 11400000, guid: 648f1e3925073ea448fee0b877f07f6e, type: 2}
+  - {fileID: 11400000, guid: 298fec8ea9daae845b3474b6ad83dec6, type: 2}
+  - {fileID: 11400000, guid: 173a98a3cd446e44d95e74636852439b, type: 2}
+  - {fileID: 11400000, guid: 5881e52c1db889a418eaaff553f19d5e, type: 2}
+  - {fileID: 11400000, guid: 41be45201bd88364784dbb0ac15327a5, type: 2}
+  - {fileID: 11400000, guid: 38bcafb4e96d5214b81a3aeee01840f0, type: 2}
+  - {fileID: 11400000, guid: 93948fc1c15767043be6e86fb366ff69, type: 2}
+  - {fileID: 11400000, guid: bc4cb66353701154f97ab0e5de2157ff, type: 2}
+  - {fileID: 11400000, guid: f566ce861c0be824983b0883f13ada71, type: 2}
+  - {fileID: 11400000, guid: 390f20705eabd064fb93ea28a7f62793, type: 2}

@@ -1675,7 +1675,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6be1f3cf939f64c48aeae436679e63ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScoreText: {fileID: 1109625279}
 --- !u!114 &1109625282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2045,37 +2044,54 @@ MonoBehaviour:
   CloudWrapper: {fileID: 441116470}
   CloudPrefabs: {fileID: 1805558596156110, guid: 0af0c264f68f2c44aaa5d7248efa6aac,
     type: 2}
-  MainWordList:
-  - {fileID: 11400000, guid: 8a2c8521c86d74644bf63a37615bdef7, type: 2}
-  - {fileID: 11400000, guid: e631d9ceb38c21747b2d93645cbbf719, type: 2}
-  - {fileID: 11400000, guid: 14954c79ed48bbb4299e486c298f5666, type: 2}
-  - {fileID: 11400000, guid: 2cb9e8598a5ef9a4a9b819798fccb6aa, type: 2}
-  - {fileID: 11400000, guid: f745edc2c39efc647a5715bef216e28e, type: 2}
-  - {fileID: 11400000, guid: a1e1fb3e18b645c4cb5e603968cfe643, type: 2}
-  - {fileID: 11400000, guid: d36e3899e5300ed4390b68d2b049a9c3, type: 2}
-  - {fileID: 11400000, guid: 9e2cf610e0583654fa22e269ceb0558a, type: 2}
-  - {fileID: 11400000, guid: c1ae9294aca07334d8cf613858ff7439, type: 2}
-  - {fileID: 11400000, guid: f1abe816152ba1c408f663cf07645c73, type: 2}
-  MainWordList4off:
-  - {fileID: 11400000, guid: e3341e97b3cdd614b98453813ffed4c8, type: 2}
-  - {fileID: 11400000, guid: e2823c625836fbc4d962da6751c6ec6f, type: 2}
-  - {fileID: 11400000, guid: 5511849110efbe545857d745748e8e58, type: 2}
-  - {fileID: 11400000, guid: 4513feb7d9353034eb8acbcabe3a9d0f, type: 2}
-  - {fileID: 11400000, guid: 1cab114941e5d1841b0c473c5002a04f, type: 2}
-  - {fileID: 11400000, guid: c32807400e9da824cb266c0b907731b3, type: 2}
-  - {fileID: 11400000, guid: 3c5b0225eaf99bf41801d048bde10abc, type: 2}
-  - {fileID: 11400000, guid: d037d6bc68805c245a1e9f9676d588f7, type: 2}
-  - {fileID: 11400000, guid: d69dab6ede4ff1046a802f7986cef13c, type: 2}
-  - {fileID: 11400000, guid: 6cb5a54d284e309408aa12491f9308af, type: 2}
-  MainWordListSix:
-  - {fileID: 11400000, guid: 170807fd5d3060445acf24e6f0410a7a, type: 2}
-  - {fileID: 0}
-  MainWordListEight:
-  - {fileID: 11400000, guid: 68be9c55493ed564fa45e9f4c98d8915, type: 2}
-  - {fileID: 0}
-  MainWordListTen:
-  - {fileID: 11400000, guid: c279fbc4087420141a642d0b69a8ab26, type: 2}
-  - {fileID: 0}
+  MainWordList4On:
+  - {fileID: 11400000, guid: 22f19cfc09604174aae883b3b9a9a52e, type: 2}
+  - {fileID: 11400000, guid: 5a5b7cc07d79ed14cbab9b45827b9631, type: 2}
+  - {fileID: 11400000, guid: def9a237733ad2648853ee8388ea464b, type: 2}
+  - {fileID: 11400000, guid: 3f07f0bf7c7303b49ad9799e14ea2f94, type: 2}
+  - {fileID: 11400000, guid: 659ef1fd550aa1741ba68af6ad3a869e, type: 2}
+  - {fileID: 11400000, guid: bf7404a3eed63b54794acde01fbb7b8b, type: 2}
+  - {fileID: 11400000, guid: 4fd70c843b9a36340b07eed3cb7f7ac5, type: 2}
+  - {fileID: 11400000, guid: 52a3ba9da7719b441a45c6b131062640, type: 2}
+  - {fileID: 11400000, guid: 368dcdbf4b540d64cbad3cde8299942b, type: 2}
+  - {fileID: 11400000, guid: aaa934a581c78b94ab49daeb0c7fdc29, type: 2}
+  MainWordList4Off:
+  - {fileID: 11400000, guid: 57c99faa6d564f645a96355819c2463d, type: 2}
+  - {fileID: 11400000, guid: 1b20e3f6cacbf434797286cb64fcde9c, type: 2}
+  - {fileID: 11400000, guid: e16f59d239d78fd4c8abc5c31aa06602, type: 2}
+  - {fileID: 11400000, guid: a0f6789f91f5361489f2f9098643507e, type: 2}
+  - {fileID: 11400000, guid: 0075fe91ec3fde74c880fe187730c894, type: 2}
+  - {fileID: 11400000, guid: 720f0e6197e2a7a498dc9cb158c98d38, type: 2}
+  - {fileID: 11400000, guid: dacade60f4acb1f45896a996e55b1be3, type: 2}
+  - {fileID: 11400000, guid: d2586fc70cf660f4996baf684358d5d9, type: 2}
+  - {fileID: 11400000, guid: 286553a591b24c9438f41645a4de2d02, type: 2}
+  - {fileID: 11400000, guid: c40be190409a9504ba30494e359b23f0, type: 2}
+  MainWordList6On: []
+  MainWordList6Off: []
+  MainWordList8On: []
+  MainWordList8Off: []
+  MainWordList10On:
+  - {fileID: 11400000, guid: 1c78e2c4ac60a44439b493bf37bf2d9c, type: 2}
+  - {fileID: 11400000, guid: 1dcf899eb6462304f9c884764c299e38, type: 2}
+  - {fileID: 11400000, guid: ca7bee73e446bcb49a181f20c747eca3, type: 2}
+  - {fileID: 11400000, guid: f95728d99de1ce742a929751660d0f7e, type: 2}
+  - {fileID: 11400000, guid: 4a96fcf2b0c45aa4cbb45f5f1c12ced4, type: 2}
+  - {fileID: 11400000, guid: 54c0c215d85c3ff479e12e5b0eaab7f8, type: 2}
+  - {fileID: 11400000, guid: 205d5e69a7f59064fbc03daf7bc85f2d, type: 2}
+  - {fileID: 11400000, guid: 8a1b6b2527b3fdc429ce68bcb43844aa, type: 2}
+  - {fileID: 11400000, guid: aeda09c78280e5d479de71671b208135, type: 2}
+  - {fileID: 11400000, guid: e962c90153af1ef46be963b893913dd4, type: 2}
+  MainWordList10Off:
+  - {fileID: 11400000, guid: 0bd44a4de63f82246a625216e3816264, type: 2}
+  - {fileID: 11400000, guid: 1c018cec0a9ddb542880064b30d84c3e, type: 2}
+  - {fileID: 11400000, guid: b1d7fa66258d38144b4c7a7f74ceba4b, type: 2}
+  - {fileID: 11400000, guid: 06f4685d4f77ac24881be3721131cbfc, type: 2}
+  - {fileID: 11400000, guid: 0d6d02964938fae4ca124631430d8785, type: 2}
+  - {fileID: 11400000, guid: 6bffe9d9acd54ac4c9d099e64685be70, type: 2}
+  - {fileID: 11400000, guid: 1686bb171fdd8e74082735b7af63c402, type: 2}
+  - {fileID: 11400000, guid: 659fbdd1df4ceb646b1b4e7e78261bf5, type: 2}
+  - {fileID: 11400000, guid: 34ffe200d6cf0df439f309e7bb594e88, type: 2}
+  - {fileID: 11400000, guid: a15cba33067156241bf38c76df8b380d, type: 2}
   CurrentWordListItem: {fileID: 0}
   _listCounter: 0
   AllowedPositions:

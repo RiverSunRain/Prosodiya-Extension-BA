@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a7f43beaa9cf364998b37c06f99ed85, type: 3}
+  m_Name: WL4on3
+  m_EditorClassIdentifier: 
+  WordList:
+  - {fileID: 11400000, guid: 4b5cd2e01a7562b43bb3e70d60b6460d, type: 2}
+  - {fileID: 11400000, guid: 5aa41b81b9acb4d43ade7b900fe0aa7a, type: 2}
+  - {fileID: 11400000, guid: 390f20705eabd064fb93ea28a7f62793, type: 2}
+  - {fileID: 11400000, guid: 56eaa1c8272e0394db6bb874c4342f9e, type: 2}

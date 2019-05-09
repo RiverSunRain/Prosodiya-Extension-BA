@@ -29,15 +29,25 @@ public class Controller : MonoBehaviourSingleton<Controller>
 
     // Wordlists
 
-    public List<WordListItem> MainWordList = new List<WordListItem>();
+    public List<WordListItem> MainWordList4On = new List<WordListItem>();
 
-    public List<WordListItem> MainWordList4off = new List<WordListItem>();
+    public List<WordListItem> MainWordList4Off = new List<WordListItem>();
 
-    public List<WordListItem> MainWordListSix = new List<WordListItem>();
 
-    public List<WordListItem> MainWordListEight = new List<WordListItem>();
+    public List<WordListItem> MainWordList6On = new List<WordListItem>();
 
-    public List<WordListItem> MainWordListTen = new List<WordListItem>();
+    public List<WordListItem> MainWordList6Off = new List<WordListItem>();
+
+
+    public List<WordListItem> MainWordList8On = new List<WordListItem>();
+
+    public List<WordListItem> MainWordList8Off = new List<WordListItem>();
+
+
+    public List<WordListItem> MainWordList10On = new List<WordListItem>();
+
+    public List<WordListItem> MainWordList10Off = new List<WordListItem>();
+
 
     public WordListItem CurrentWordListItem;
 
@@ -177,24 +187,24 @@ public class Controller : MonoBehaviourSingleton<Controller>
 
             if (CharacterCreator.Instance.NumberOfClouds == "4")
             {
-                CurrentWordListItem = MainWordList[_listCounter];
+                CurrentWordListItem = MainWordList4On[_listCounter];
             }
             else if (CharacterCreator.Instance.NumberOfClouds == "6")
             {
-                CurrentWordListItem = MainWordListSix[_listCounter];
+                CurrentWordListItem = MainWordList6On[_listCounter];
             }
             else if (CharacterCreator.Instance.NumberOfClouds == "8")
             {
-                CurrentWordListItem = MainWordListEight[_listCounter];
+                CurrentWordListItem = MainWordList8On[_listCounter];
             }
             else if (CharacterCreator.Instance.NumberOfClouds == "10")
             {
-                CurrentWordListItem = MainWordListTen[_listCounter];
+                CurrentWordListItem = MainWordList10On[_listCounter];
             }
             else
             {
                 //Default, 4 Clouds
-                CurrentWordListItem = MainWordList[_listCounter];
+                CurrentWordListItem = MainWordList4On[_listCounter];
             }
 
 
@@ -206,24 +216,24 @@ public class Controller : MonoBehaviourSingleton<Controller>
 
             if (CharacterCreator.Instance.NumberOfClouds == "4")
             {
-                CurrentWordListItem = MainWordList4off[_listCounter];
+                CurrentWordListItem = MainWordList4Off[_listCounter];
             }
             else if (CharacterCreator.Instance.NumberOfClouds == "6")
             {
-                CurrentWordListItem = MainWordListSix[_listCounter];
+                CurrentWordListItem = MainWordList6Off[_listCounter];
             }
             else if (CharacterCreator.Instance.NumberOfClouds == "8")
             {
-                CurrentWordListItem = MainWordListEight[_listCounter];
+                CurrentWordListItem = MainWordList8Off[_listCounter];
             }
             else if (CharacterCreator.Instance.NumberOfClouds == "10")
             {
-                CurrentWordListItem = MainWordListTen[_listCounter];
+                CurrentWordListItem = MainWordList10Off[_listCounter];
             }
             else
             {
                 //Default, 4 Clouds
-                CurrentWordListItem = MainWordList4off[_listCounter];
+                CurrentWordListItem = MainWordList4Off[_listCounter];
             }
 
         }
