@@ -393,7 +393,7 @@ public class Controller : MonoBehaviourSingleton<Controller>
         if (CharacterCreator.Instance.Gamification == "On") {
             SceneManager.LoadScene("End_Screen");
         } else if (CharacterCreator.Instance.Gamification == "Off") {
-            SceneManager.LoadScene("End_Screen_1");
+            SceneManager.LoadScene("End_Screen");
         }
             
     }
