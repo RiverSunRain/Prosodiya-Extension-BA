@@ -39,18 +39,18 @@ public class CharacterCreator : MonoBehaviourSingleton<CharacterCreator>
         SceneManager.LoadScene("Scene_1");
     }
 
-    public void SavePlayer()
-    {
-        SaveSystem.SavePlayer(this);
-    }
+    //public void SavePlayer()
+    //{
+    //    SaveSystem.SavePlayer(this);
+    //}
 
-    public void LoadPlayer() {
-        PlayerData data = SaveSystem.LoadPlayer();
+    //public void LoadPlayer() {
+    //    PlayerData data = SaveSystem.LoadPlayer();
 
-        Age = data.age;
-        Gender = data.gender;
-        Handedness = data.handness;
-        SubjectNumber = data.subjectNumber;
-    }
+    //    Age = data.age;
+    //    Gender = data.gender;
+    //    Handedness = data.handness;
+    //    SubjectNumber = data.subjectNumber;
+    //}
 
 }

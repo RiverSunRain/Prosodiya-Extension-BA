@@ -78,43 +78,6 @@ public class Controller : MonoBehaviourSingleton<Controller>
     public start_audio_script sas;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     //FINAL GAME STRUCTURE
 
     void Start()
@@ -130,15 +93,14 @@ public class Controller : MonoBehaviourSingleton<Controller>
         RoundScript.Instance.destroyRound(CharacterCreator.Instance.Gamification);
         ScoreScript.Instance.Setback();
 
-        PrepareScene();   
+        PrepareScene();
     }
 
     public void PrepareScene()
     {
         Debug.Log("PrepareScene() ##");
-        StartGame();        
+        StartGame();
         //prepare scene related stuff
-        
     }
 
     public void StartGame()
@@ -159,7 +121,8 @@ public class Controller : MonoBehaviourSingleton<Controller>
         Debug.Log("PrepareTask() ##");
         Hit = true;
         //prepare top pb
-        if (CharacterCreator.Instance.Gamification == "On") {
+        if (CharacterCreator.Instance.Gamification == "On")
+        {
             TopProgressBar.Instance.Prepare(10);
         }
 
@@ -176,15 +139,11 @@ public class Controller : MonoBehaviourSingleton<Controller>
         }
 
 
-
-
         //prepare clouds
         //CurrentWordListItem = MainWordListTen[_listCounter];
 
         if (CharacterCreator.Instance.Gamification == "On")
         {
-
-
             if (CharacterCreator.Instance.NumberOfClouds == "4")
             {
                 CurrentWordListItem = MainWordList4On[_listCounter];
@@ -206,14 +165,9 @@ public class Controller : MonoBehaviourSingleton<Controller>
                 //Default, 4 Clouds
                 CurrentWordListItem = MainWordList4On[_listCounter];
             }
-
-
-
-
-
         }
-        else if (CharacterCreator.Instance.Gamification == "Off") {
-
+        else if (CharacterCreator.Instance.Gamification == "Off")
+        {
             if (CharacterCreator.Instance.NumberOfClouds == "4")
             {
                 CurrentWordListItem = MainWordList4Off[_listCounter];
@@ -235,30 +189,7 @@ public class Controller : MonoBehaviourSingleton<Controller>
                 //Default, 4 Clouds
                 CurrentWordListItem = MainWordList4Off[_listCounter];
             }
-
         }
-
-        
-
-
-
-
-
-
-
-
-
-      
-
-
-
-
-
-
-
-
-
-
 
 
         //CurrentWordListItem = selectList(CharacterCreator.Instance.NumberOfClouds)[_listCounter];
@@ -269,7 +200,8 @@ public class Controller : MonoBehaviourSingleton<Controller>
     public void StartTask()
     {
         Debug.Log("StartTask() ##");
-        if (CharacterCreator.Instance.Gamification == "On") {
+        if (CharacterCreator.Instance.Gamification == "On")
+        {
             SideProgressBarScript.Instance.PrepareSideProgressBar(_maxAllowedClicks);
         }
         PrepareSubTask();
@@ -279,11 +211,12 @@ public class Controller : MonoBehaviourSingleton<Controller>
     {
         Debug.Log("PrepareSubTask() ##");
 
-        if(CharacterCreator.Instance.Gamification == "On") {
+        if (CharacterCreator.Instance.Gamification == "On")
+        {
             ScoreStarScript.Instance.b = false;
             ScoreStarScript.Instance.Flashing();
         }
-             
+
         foreach (var btn in FindObjectsOfType<Button>())
         {
             btn.interactable = true;
@@ -291,26 +224,29 @@ public class Controller : MonoBehaviourSingleton<Controller>
 
         //prepare side pb
 
-        
+
         StartSubtask();
     }
 
-    
+
     public void StartSubtask()
     {
         Debug.Log("StartSubTask() ##");
-        
+
         //jump to finishsubtask, wenn bedinung dafür erfüllt (es wurde geklickt)
         //bleibt vermutlich leer, da finish subtask von cloudwasclick gecalled wird
         //FinishSubTask(); // DANGEROUS, INFINITE LOOP!
+
+        //beginn RT
+        SaveSystem.SW.Start();
     }
-    
+
 
     public void FinishSubTask()
     {
         Debug.Log("FinishSubTask() ##");
         //update side pb
-        
+
         //animations here
 
         CleanupSubTask();
@@ -334,7 +270,7 @@ public class Controller : MonoBehaviourSingleton<Controller>
     {
         Debug.Log("CleanUpSubTask() ##");
 
-        
+
         //if (_clicks == 3) { SideProgressBarScript.Instance.ResetSideProgressBar(); }
         //###abbruchbedinung subtasks
         //abfrage ob letzte subtask (click abfrage)
@@ -355,10 +291,11 @@ public class Controller : MonoBehaviourSingleton<Controller>
     {
         Debug.Log("CleanUpTask() ##");
 
-        if (CharacterCreator.Instance.Gamification == "On") {
+        if (CharacterCreator.Instance.Gamification == "On")
+        {
             SideProgressBarScript.Instance.ResetSideProgressBar();
         }
-        
+
         //bene: counter erhöhen für den nächsten durchgang
         _listCounter++;
         //bene: click counter zurücksetzen
@@ -370,118 +307,37 @@ public class Controller : MonoBehaviourSingleton<Controller>
         }
 
 
-
         //###abbruchbedinung tasks
         //listcount max erreicht?
         //ja
-        if (_listCounter == 10) {
+        if (_listCounter == 10)
+        {
             FinishGame();
         }
         else
         {
             PrepareTask();
         }
-        
+
         //nein
-        
     }
 
     public void CleanupScene()
     {
         Debug.Log("CleanupScene() ##");
         //    Szenenwechsel
-        if (CharacterCreator.Instance.Gamification == "On") {
-            SceneManager.LoadScene("End_Screen");
-        } else if (CharacterCreator.Instance.Gamification == "Off") {
+        if (CharacterCreator.Instance.Gamification == "On")
+        {
             SceneManager.LoadScene("End_Screen");
         }
-            
+        else if (CharacterCreator.Instance.Gamification == "Off")
+        {
+            SceneManager.LoadScene("End_Screen");
+        }
     }
 
 
-
     // END FINAL GAME STRUCTURE
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     /*
@@ -580,7 +436,7 @@ public void StartGame()
         }
 
         //Tests if data from Input Scene have been saved
-        
+
         /*
         Debug.Log("Age: " + CharacterCreator._instance.Age);
         Debug.Log("Gender: " + CharacterCreator._instance.Gender);
@@ -618,6 +474,11 @@ public void StartGame()
 
     public IEnumerator CloudWasClicked(Word word, GameObject cloudGo)
     {
+        //end RT
+        SaveSystem.RtClick = SaveSystem.SW.ElapsedMilliseconds;
+        Debug.Log(SaveSystem.RtClick);
+        SaveSystem.SW.Stop();
+
         /*
         *cloud clicked
             interactable = false
@@ -650,28 +511,30 @@ public void StartGame()
 
             //GameObject upd = SideProgressBarScript.Instance.UpdateSideProgressBar(true);
 
-            if (CharacterCreator.Instance.Gamification == "On") {
+            if (CharacterCreator.Instance.Gamification == "On")
+            {
                 var go = SideProgressBarScript.Instance.UpdateSideProgressBar(true);
                 //Animation Cloud zu filler - move
                 LeanTween.move(cloudGo, go.transform.position, 1f);
                 //scale it, make it smaller
                 LeanTween.scale(cloudGo, Vector3.zero, 1f);
-            } else if (CharacterCreator.Instance.Gamification == "Off") {
+            }
+            else if (CharacterCreator.Instance.Gamification == "Off")
+            {
                 LeanTween.move(cloudGo, cloudGo.transform.position, 1f);
                 LeanTween.scale(cloudGo, Vector3.zero, 0.000000000000001f);
             }
-            
-
 
 
             //sas.PlayPositiveFeedbackSound();
             //sas.playAudioSequentially();
 
-            if (CharacterCreator.Instance.Gamification == "On") {
+            if (CharacterCreator.Instance.Gamification == "On")
+            {
                 ScoreStarScript.Instance.b = true;
                 ScoreStarScript.Instance.StartFlashing();
             }
-           
+
             AnimationScript.Instance.s = true;
             //wait for animation to finish
             AnimationScript.Instance.UpdateAnimation();
@@ -685,7 +548,7 @@ public void StartGame()
             yield return sas.PlayPositiveFeedback();
             //ScoreScript.ScoreValue += 10;
             setScore(Hit);
-            
+
             //bene: wenn ja, dann szene cleanen und nächste preparen
             //Debug.Log("nächster Durchgang wird gestartet");
 
@@ -695,51 +558,48 @@ public void StartGame()
             //PrepareScene();
             //if (_clicks == 3) { SideProgressBarScript.Instance.ResetSideProgressBar(); }
 
-            
 
             FinishSubTask();
             PrepareSubTask();
 
             //Debug.Log("2 ##");
-
-           
         }
         else
         {
+            Debug.Log("CloudWasClicked() dist");
+            //animTime = sas.PlayNegativeFeedback();
 
-                Debug.Log("CloudWasClicked() dist");
-                //animTime = sas.PlayNegativeFeedback();
-                
 
             Hit = false;
 
             //GameObject upd = SideProgressBarScript.Instance.UpdateSideProgressBar(false);
 
-            if (CharacterCreator.Instance.Gamification == "On") {
+            if (CharacterCreator.Instance.Gamification == "On")
+            {
                 var go = SideProgressBarScript.Instance.UpdateSideProgressBar(false);
                 //Animation Cloud zu filler - move
                 LeanTween.move(cloudGo, go.transform.position, 1f);
                 //scale it, make it smaller
                 LeanTween.scale(cloudGo, Vector3.zero, 1f);
-            } else if (CharacterCreator.Instance.Gamification == "Off") {
+            }
+            else if (CharacterCreator.Instance.Gamification == "Off")
+            {
                 LeanTween.move(cloudGo, cloudGo.transform.position, 1f);
                 LeanTween.scale(cloudGo, Vector3.zero, 0.000000000000001f);
             }
-                
 
-                
 
-                AnimationScript.Instance.t = true;
-                AnimationScript.Instance.UpdateAnimation();
+            AnimationScript.Instance.t = true;
+            AnimationScript.Instance.UpdateAnimation();
 
-                foreach (var btn in FindObjectsOfType<Button>())
-                {
-                    btn.interactable = false;
-                }
+            foreach (var btn in FindObjectsOfType<Button>())
+            {
+                btn.interactable = false;
+            }
 
-                //yield return new WaitForSeconds(animTime); // 18.04.19 Für negative sound version: auskommentieren
+            //yield return new WaitForSeconds(animTime); // 18.04.19 Für negative sound version: auskommentieren
 
-                yield return sas.PlayNegativeFeedback(); // 18.04.19 Für negative sound version: einkommentieren
+            yield return sas.PlayNegativeFeedback(); // 18.04.19 Für negative sound version: einkommentieren
 
 
             //CleanupScene();
@@ -747,12 +607,8 @@ public void StartGame()
             //if (_clicks == 3) { SideProgressBarScript.Instance.ResetSideProgressBar(); }
 
 
-
             FinishSubTask();
             PrepareSubTask();
-
-
-          
         }
         /*
         if (_listCounter == 10)
@@ -760,21 +616,28 @@ public void StartGame()
             SceneManager.LoadScene("End_Screen");
         }
         **/
-        
+
+
+        SaveSystem.SubjNr = CharacterCreator.Instance.SubjectNumber;
+        SaveSystem.ClickedWord = word.WordString;
+        SaveSystem.Result = word.Distractor ? 0 : 1;
+        //rt already set earlier
+        SaveSystem.Score = ScoreScript.ScoreValue;
+        SaveSystem.WordDiff = word.Difficutly;
+
+        SaveSystem.SaveDataAndSaveToCsv();
     }
 
-    public int setScore(bool directHit) {
-        if (directHit == true) {
+    public int setScore(bool directHit)
+    {
+        if (directHit == true)
+        {
             return ScoreScript.ScoreValue += 15;
         }
-        else {
+        else
+        {
             Hit = true;
             return ScoreScript.ScoreValue += 10;
         }
     }
-
-  
-
-
-
 }

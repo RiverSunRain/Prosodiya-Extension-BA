@@ -1,39 +1,35 @@
 ﻿using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-public static class SaveSystem {
+using System.Diagnostics;
+using System.Text;
+using Debug = UnityEngine.Debug;
 
-    public static void SavePlayer(CharacterCreator characterCreator) {
+public static class SaveSystem
+{
+    public static Stopwatch SW = new Stopwatch();
 
-        BinaryFormatter formatter = new BinaryFormatter();
+    public static string SubjNr;
+    public static string ClickedWord;
+    public static float RtClick;
+    public static int Result;
+    public static int Score;
+    public static int WordDiff;
 
-        string path = Application.persistentDataPath + "/player.bd";
-        FileStream stream = new FileStream(path, FileMode.Create);
+    private static string _separator = ";";
 
-        PlayerData data = new PlayerData(characterCreator);
+    public static void SaveDataAndSaveToCsv()
+    {
+        string filename = Application.persistentDataPath + "/player" + SubjNr + ".csv";
 
-        formatter.Serialize(stream, data);
-        stream.Close();
+        var csvLine = SubjNr + _separator + ClickedWord + _separator + RtClick + _separator + Result + _separator +
+                      Score + _separator + WordDiff + System.Environment.NewLine;
 
-    }
-
-    public static PlayerData LoadPlayer() {
-
-        string path = Application.persistentDataPath + "/player.bd";
-        if (File.Exists(path))
+        if (!File.Exists(filename))
         {
-            BinaryFormatter formattter = new BinaryFormatter();
-            FileStream stream = new FileStream(path, FileMode.Open);
-
-            PlayerData data = formattter.Deserialize(stream) as PlayerData;
-            stream.Close();
-
-            return data;
-
+            var header = "SubjNr;ClickedWord;RtClick;Result;Score;Wordiff;" + System.Environment.NewLine;
+            File.WriteAllText(filename, header, Encoding.UTF8);
         }
-        else {
-            Debug.LogError("Save File not found in " + path);
-            return null;
-        }
+        File.AppendAllText(filename, csvLine, Encoding.UTF8);
     }
 }
