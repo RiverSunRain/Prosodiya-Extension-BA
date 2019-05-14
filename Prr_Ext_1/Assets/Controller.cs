@@ -332,7 +332,7 @@ public class Controller : MonoBehaviourSingleton<Controller>
         }
         else if (CharacterCreator.Instance.Gamification == "Off")
         {
-            SceneManager.LoadScene("End_Screen");
+            SceneManager.LoadScene("End_Screen_1");
         }
     }
 
