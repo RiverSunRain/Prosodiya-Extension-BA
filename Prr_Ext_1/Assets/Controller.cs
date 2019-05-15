@@ -476,8 +476,8 @@ public void StartGame()
     {
         //end RT
         SaveSystem.RtClick = SaveSystem.SW.ElapsedMilliseconds;
-        Debug.Log(SaveSystem.RtClick);
         SaveSystem.SW.Stop();
+        SaveSystem.SW.Reset();
 
         /*
         *cloud clicked
