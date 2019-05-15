@@ -27,7 +27,7 @@ public class AnimationScript : MonoBehaviourSingleton<AnimationScript>
 
         if (s == true) {
             LeanTween.pause(yellowBlob);
-            rb.velocity = new Vector2(rb.velocity.x, 6);
+            rb.velocity = new Vector2(rb.velocity.x, 7);
             s = false;
         } else if(t == true){
             /*
@@ -42,7 +42,7 @@ public class AnimationScript : MonoBehaviourSingleton<AnimationScript>
             }
             t = false;
             **/
-            LeanTween.moveX(yellowBlob, 9, 0.1f).setLoopPingPong(4);
+            LeanTween.moveX(yellowBlob, 10, 0.1f).setLoopPingPong(4);
             
         }
         
